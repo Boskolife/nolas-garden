@@ -10,7 +10,7 @@ htmlFiles.forEach((file) => {
 });
 
 export default defineConfig({
-  base: '/vite-landing-template',
+  base: '/nolas-garden',
   root: 'src',
   publicDir: '../public',
   plugins: [
@@ -23,4 +23,9 @@ export default defineConfig({
     outDir: '../dist/',
     emptyOutDir: true,
   },
+  server:{
+    port: 3000,
+    host: true,
+    open: true,
+  }
 });
