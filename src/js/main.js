@@ -102,8 +102,13 @@ function initHeroTabs() {
     return;
   }
 
+  let currentTabIndex = 0;
+  let autoSwitchInterval = null;
+  const AUTO_SWITCH_INTERVAL = 9000; // 10 seconds in milliseconds
+
   // Initialize: show first tab, hide others
   function showTab(tabIndex) {
+    currentTabIndex = tabIndex;
     const tabIndexStr = String(tabIndex);
 
     // Hide all tab contents
@@ -173,11 +178,30 @@ function initHeroTabs() {
   // Initialize first tab as active
   showTab(0);
 
+  // Auto-switch tabs function
+  function startAutoSwitch() {
+    // Clear existing interval if any
+    if (autoSwitchInterval) {
+      clearInterval(autoSwitchInterval);
+    }
+
+    // Start auto-switching every 10 seconds
+    autoSwitchInterval = setInterval(() => {
+      const nextIndex = (currentTabIndex + 1) % tabButtons.length;
+      showTab(nextIndex);
+    }, AUTO_SWITCH_INTERVAL);
+  }
+
+  // Start auto-switching
+  startAutoSwitch();
+
   // Add click handlers to buttons
   tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const tabIndex = parseInt(button.getAttribute('data-tab-index'), 10);
       showTab(tabIndex);
+      // Restart auto-switch timer after manual click
+      startAutoSwitch();
     });
 
     // Keyboard navigation support
