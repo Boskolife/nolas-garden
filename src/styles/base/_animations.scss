@@ -14,8 +14,6 @@
     animation-name: fadeInUpZoom;
 }
 
-
-/* буква */
 .char {
     display: inline-block;
     opacity: 0;
@@ -28,12 +26,6 @@
         opacity: 1;
         filter: blur(0);
     }
-}
-
-/* убираем прыжки */
-.hero__title,
-.hero__description {
-    overflow: hidden;
 }
 
 /* accessibility */
