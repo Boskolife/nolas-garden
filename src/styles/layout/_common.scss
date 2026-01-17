@@ -22,10 +22,25 @@
         height: 100%;
     }
 
-    &_logo {
+    &__logo {
         max-width: 168px;
         width: 100%;
         height: auto;
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+
+            &:focus {
+                outline: 2px solid $rose;
+                outline-offset: 2px;
+                border-radius: 2px;
+            }
+
+            &:focus:not(:focus-visible) {
+                outline: none;
+            }
+        }
 
         img {
             width: 100%;
@@ -50,6 +65,23 @@
         line-height: 135%;
         color: $gray;
         text-transform: uppercase;
+        text-decoration: none;
+        display: inline-block;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $rose;
+        }
+
+        &:focus {
+            outline: 2px solid $rose;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
     }
 
     &__close-btn {
@@ -58,11 +90,346 @@
         background-color: transparent;
         border: none;
         cursor: pointer;
-        outline: none;
         width: 22px;
         height: 22px;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &:focus {
+            outline: 2px solid $rose;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+    }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background-color: #F8F7F5;
+
+    .container {
+        position: relative;
+    }
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 5;
+    }
+
+    &__holder {
+        @include media ("<desktop") {
+            position: relative;
+            width: 100%;
+            height: 50dvh;
+            overflow: hidden;
+        }
+
+        @include media ("<tablet") {
+            height: 345px;
+        }
+    }
+
+    &__flowers {
+        position: absolute;
+        top: 0;
+        right: 0;
+        max-width: 630px;
+        width: 100%;
+        height: auto;
+        z-index: 8;
+        display: none;
+
+        @include media ("<desktop") {
+            max-width: 400px;
+        }
+
+        @include media ("<tablet") {
+            max-width: 290px;
+            margin-right: -60px;
+        }
+
+        &.hero__tab-content_active {
+            display: block;
+        }
+    }
+
+    &__video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 4;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    &__tab-content {
+        &_active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__content {
+        padding: 205px 0 105px 0;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        @include media ("<desktop") {
+            padding-top: 0;
+            padding-bottom: 24px;
+        }
+    }
+
+    &__tip {
+        font-weight: 600;
+        @include adaptive-value("font-size", 17, 10, 1);
+        color: $gray;
+        line-height: 135%;
+        text-transform: uppercase;
+        letter-spacing: 0.01em;
+        position: absolute;
+        top: 60px;
+        left: 15px;
+        z-index: 10;
+
+        @include media ("<desktop") {
+            top: 15px;
+        }
+    }
+
+    &__tabs-buttons {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        align-items: center;
+        column-gap: 5px;
+        padding: 8px 0;
+        margin-bottom: 7px;
+
+        @include media ("<desktop") {
+            width: 100%;
+            margin-bottom: 24px;
+            grid-template-columns: auto auto auto auto auto auto auto;
+        }
+    }
+
+    &__tab-button {
+        @include adaptive-value("font-size", 16, 12, 1);
+        color: $gray;
+        line-height: 140%;
+        letter-spacing: 0.01em;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        position: relative;
+
+        &:hover {
+            color: $rose;
+        }
+
+        &:focus {
+            outline: 2px solid $rose;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        &_active {
+            color: $rose;
+        }
+    }
+
+    .divider {
+        width: 100%;
+        height: 1px;
+        background-color: $gray;
+    }
+
+    &__inner {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+
+        @include media ("<desktop") {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        &.hero__tab-content_active {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        &:nth-child(1) {
+            .hero__title {
+                span {
+                    &:nth-child(2) {
+                        margin-left: 175px;
+
+                        @include media ("<tablet") {
+                            margin-left: 35px;
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        margin-left: 50px;
+
+                        @include media ("<tablet") {
+                            margin-left: 25px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            .hero__title {
+                span {
+                    &:nth-child(2) {
+                        margin-left: 90px;
+
+                        @include media ("<tablet") {
+                            margin-left: 65px;
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        margin-left: 50px;
+
+                        @include media ("<tablet") {
+                            margin-left: 20px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(3) {
+            .hero__title {
+                span {
+                    &:nth-child(2) {
+                        margin-left: 175px;
+
+                        @include media ("<tablet") {
+                            margin-left: 35px;
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        margin-left: 50px;
+
+                        @include media ("<tablet") {
+                            margin-left: 25px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(4) {
+            .hero__title {
+                span {
+                    &:nth-child(2) {
+                        margin-left: 130px;
+
+                        @include media ("<tablet") {
+                            margin-left: 65px;
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        margin-left: 50px;
+
+                        @include media ("<tablet") {
+                            margin-left: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        @include adaptive-value("font-size", 96, 35, 1);
+        margin-bottom: 22px;
+
+        span {
+            display: inline-block;
+        }
+    }
+
+    &__inner-block {
+        max-width: 345px;
+        width: 100%;
+        margin-left: 50px;
+
+        @include media ("<desktop") {
+            margin: 0;
+        }
+    }
+
+    &__description {
+        @include adaptive-value("font-size", 18, 16, 1);
+        color: $black;
+        line-height: 140%;
+        margin-bottom: 22px;
+
+        @include media ("<tablet") {
+            margin-bottom: 12px;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 12px;
+    }
+
+    &__button {
+        width: 100%;
+
+        &:nth-child(2) {
+            animation-delay: 0.5s;
+        }
     }
 }

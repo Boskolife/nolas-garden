@@ -1,25 +1,35 @@
 <header id="header" class="header">
     <div class="container">
         <div class="header__inner">
-            <a href="#" class="header__logo">
-                <img src="./images/logo.webp" width="168" height="44" alt="Nola`s Garden">
+            <a href="/" class="header__logo" aria-label="Nola's Garden - Home">
+                <img src="./images/logo.webp" width="168" height="44" alt="Nola's Garden">
             </a>
-            <nav class="header__nav">
+            <nav class="header__nav" aria-label="Main navigation">
                 <ul class="header__nav-list">
-                    <div class="header__nav-list-col">
-                        <li><a href="#" class="header__nav-link">Services</a></li>
-                        <li><a href="#" class="header__nav-link">Portfolio</a></li>
-                    </div>
-                    <div class="header__nav-list-col">
-                        <li><a href="#" class="header__nav-link">Our Story</a></li>
-                        <li><a href="#" class="header__nav-link">Contact US</a></li>
-                    </div>
+                    <li class="header__nav-list-col">
+                        <ul class="header__nav-list-group">
+                            <li><a href="#" class="header__nav-link">Services</a></li>
+                            <li><a href="#" class="header__nav-link">Portfolio</a></li>
+                        </ul>
+                    </li>
+                    <li class="header__nav-list-col">
+                        <ul class="header__nav-list-group">
+                            <li><a href="#" class="header__nav-link">Our Story</a></li>
+                            <li><a href="#" class="header__nav-link">Contact US</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
-            <button class="header__burger">
-                <span class="header__burger-line"></span>
-                <span class="header__burger-line"></span>
-                <span class="header__burger-line"></span>
+            <button 
+                class="header__burger" 
+                type="button"
+                aria-label="Open mobile menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+            >
+                <span class="header__burger-line" aria-hidden="true"></span>
+                <span class="header__burger-line" aria-hidden="true"></span>
+                <span class="header__burger-line" aria-hidden="true"></span>
             </button>
         </div>
     </div>

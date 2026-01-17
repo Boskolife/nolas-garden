@@ -11,6 +11,158 @@
 <body>
   {{> header }}
   {{> mobile-menu }}
+  <main class="main">
+    <section class="hero">
+      <div class="container">
+        <span class="hero__tip">Premium Floral Studio <br> in Los Angeles</span>
+      </div>
+      <picture class="hero__bg">
+        <img src="./images/paper.webp" width="100%" height="100%" alt="Paper Flower">
+      </picture>
+      <div class="hero__holder">
+        <picture
+          class="hero__flowers hero__tab-content hero__tab-content_active animate__animated animate__fadeInRight"
+          data-tab="0" aria-hidden="false">
+          <img src="./images/hero/flowers.webp" width="100%" height="100%" alt="Flowers">
+        </picture>
+        <picture class="hero__flowers hero__tab-content animate__animated animate__fadeInRight"
+          data-tab="1" aria-hidden="true">
+          <img src="./images/hero/flowers-1.webp" width="100%" height="100%" alt="Flowers">
+        </picture>
+        <picture class="hero__flowers hero__tab-content animate__animated animate__fadeInRight"
+          data-tab="2" aria-hidden="true">
+          <img src="./images/hero/flowers-2.webp" width="100%" height="100%" alt="Flowers">
+        </picture>
+        <picture class="hero__flowers hero__tab-content animate__animated animate__fadeInRight"
+          data-tab="3" aria-hidden="true">
+          <img src="./images/hero/flowers-3.webp" width="100%" height="100%" alt="Flowers">
+        </picture>
+        <video class="hero__video hero__tab-content hero__tab-content_active" data-tab="0"
+          width="100%" height="100%" muted loop aria-hidden="false">
+          <source src="./video/cat-video-1.mp4" type="video/mp4">
+          <source src="./video/cat-video-1.webm" type="video/webm">
+        </video>
+        <video class="hero__video hero__tab-content" data-tab="1" width="100%" height="100%" muted
+          loop aria-hidden="true">
+          <source src="./video/cat-video-2.mp4" type="video/mp4">
+          <source src="./video/cat-video-2.webm" type="video/webm">
+        </video>
+        <video class="hero__video hero__tab-content" data-tab="2" width="100%" height="100%" muted
+          loop aria-hidden="true">
+          <source src="./video/cat-video-3.mp4" type="video/mp4">
+          <source src="./video/cat-video-3.webm" type="video/webm">
+        </video>
+        <video class="hero__video hero__tab-content" data-tab="3" width="100%" height="100%" muted
+          loop aria-hidden="true">
+          <source src="./video/cat-video-4.mp4" type="video/mp4">
+          <source src="./video/cat-video-4.webm" type="video/webm">
+        </video>
+      </div>
+      <div class="container">
+        <div class="hero__content">
+          <div class="hero__tabs-buttons" role="tablist" aria-label="Hero content tabs">
+            <button class="hero__tab-button" type="button" role="tab" aria-selected="true"
+              aria-controls="hero-tab-0" data-tab-index="0">Celebrations</button>
+            <div class="divider"></div>
+            <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
+              aria-controls="hero-tab-1" data-tab-index="1">Workspaces</button>
+            <div class="divider"></div>
+            <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
+              aria-controls="hero-tab-2" data-tab-index="2">Weddings</button>
+            <div class="divider"></div>
+            <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
+              aria-controls="hero-tab-3" data-tab-index="3">Baby showers</button>
+          </div>
+          <div class="hero__inner-holder">
+            <div class="hero__inner hero__tab-content hero__tab-content_active" data-tab="0"
+              id="hero-tab-0" role="tabpanel">
+              <h2 class="hero__title">
+                <span>Bespoke Floral Designs</span>
+                <span>for Restaurants</span>
+                <span>& Workspaces</span>
+              </h2>
+              <div class="hero__inner-block">
+                <p class="hero__description">
+                  Serving Los Angeles and Orange County with care and intention.
+                </p>
+                <div class="hero__buttons">
+                  <a href="#"
+                    class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
+                    Us</a>
+                  <a href="#"
+                    class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
+                    Portfolio</a>
+                </div>
+              </div>
+            </div>
+            <div class="hero__inner hero__tab-content" data-tab="1" id="hero-tab-1" role="tabpanel">
+              <h2 class="hero__title">
+                <span>Birthdays,</span>
+                <span>Holidays,</span>
+                <span>& Just Because</span>
+              </h2>
+              <div class="hero__inner-block">
+                <p class="hero__description">
+                  <strong>For celebrating the people you love — and the moments in between.</strong>
+                  Proudly serving Los Angeles and Orange County.
+                </p>
+                <div class="hero__buttons">
+                  <a href="#"
+                    class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
+                    Us</a>
+                  <a href="#"
+                    class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
+                    Portfolio</a>
+                </div>
+              </div>
+            </div>
+            <div class="hero__inner hero__tab-content" data-tab="2" id="hero-tab-2" role="tabpanel">
+              <h2 class="hero__title">
+                <span>Weddings</span>
+                <span>& Events</span>
+                <span>Reimagined</span>
+              </h2>
+              <div class="hero__inner-block">
+                <p class="hero__description">
+                  Floral creations that feel personal, considered, and true to the people they're
+                  made
+                  for.
+                </p>
+                <div class="hero__buttons">
+                  <a href="#"
+                    class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
+                    Us</a>
+                  <a href="#"
+                    class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
+                    Portfolio</a>
+                </div>
+              </div>
+            </div>
+            <div class="hero__inner hero__tab-content" data-tab="3" id="hero-tab-3" role="tabpanel">
+              <h2 class="hero__title">
+                <span>Celebrating Milestones-</span>
+                <span>BABY SHOWERS</span>
+                <span>& Beyond</span>
+              </h2>
+              <div class="hero__inner-block">
+                <p class="hero__description">
+                  For gatherings that matter.
+                </p>
+                <div class="hero__buttons">
+                  <a href="#"
+                    class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
+                    Us</a>
+                  <a href="#"
+                    class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
+                    Portfolio</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
   <script type="module" src="/js/main.js"></script>
 </body>
 

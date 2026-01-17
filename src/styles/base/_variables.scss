@@ -6,6 +6,7 @@ $black: #1A1A1A;
 $white: #fff;
 $gray: #5A5A5A;
 $rose: #B68C8C;
+$rose-dark: #986E6E;
 
 
 
@@ -58,7 +59,7 @@ $h5-font-size: 17px;
 $h6-font-size: 15px;
 
 $headings-font-family: $base-font-sans-serif;
-$headings-color: inherit !default;
+$headings-color: $black;
 
 
 $animation-speed: all .3s ease 0s;

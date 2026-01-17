@@ -1,9 +1,12 @@
-<div class="mobile-menu">
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
     <div class="mobile-menu__inner">
+        <h2 id="mobile-menu-title" class="visually-hidden">Mobile Menu</h2>
         <div class="mobile-menu__logo">
-            <img src="./images/logo.webp" width="168" height="44" alt="Nola`s Garden">
+            <a href="/" aria-label="Nola's Garden - Home">
+                <img src="./images/logo.webp" width="168" height="44" alt="Nola's Garden">
+            </a>
         </div>
-        <nav class="mobile-menu__nav">
+        <nav class="mobile-menu__nav" aria-label="Mobile navigation">
             <ul class="mobile-menu__list">
                 <li><a href="#" class="mobile-menu__link">Services</a></li>
                 <li><a href="#" class="mobile-menu__link">Portfolio</a></li>
@@ -11,8 +14,12 @@
                 <li><a href="#" class="mobile-menu__link">Contact US</a></li>
             </ul>
         </nav>
-        <button class="mobile-menu__close-btn">
-            <img src="./images/close-icon.svg" alt="Close">
+        <button 
+            class="mobile-menu__close-btn" 
+            type="button"
+            aria-label="Close mobile menu"
+        >
+            <img src="./images/close-icon.svg" alt="" aria-hidden="true">
         </button>
     </div>
 </div>
