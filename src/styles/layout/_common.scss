@@ -299,7 +299,7 @@
 
         &:nth-child(1) {
             .hero__title {
-                span {
+                i {
                     &:nth-child(2) {
                         margin-left: 175px;
 
@@ -321,7 +321,7 @@
 
         &:nth-child(2) {
             .hero__title {
-                span {
+                i {
                     &:nth-child(2) {
                         margin-left: 90px;
 
@@ -343,7 +343,7 @@
 
         &:nth-child(3) {
             .hero__title {
-                span {
+                i {
                     &:nth-child(2) {
                         margin-left: 175px;
 
@@ -365,7 +365,7 @@
 
         &:nth-child(4) {
             .hero__title {
-                span {
+                i {
                     &:nth-child(2) {
                         margin-left: 130px;
 
@@ -392,8 +392,9 @@
         @include adaptive-value("font-size", 96, 35, 1);
         margin-bottom: 22px;
 
-        span {
+        i {
             display: inline-block;
+            font-style: normal;
         }
     }
 

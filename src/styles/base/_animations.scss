@@ -1,15 +1,46 @@
 @keyframes fadeInUpZoom {
     from {
-      opacity: 0;
-      transform: translate3d(0, 40px, 0) scale(0.8);
+        opacity: 0;
+        transform: translate3d(0, 40px, 0) scale(0.8);
     }
+
     to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) scale(1);
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
     }
-  }
-  
-  .animate__fadeInUpZoom {
+}
+
+.animate__fadeInUpZoom {
     animation-name: fadeInUpZoom;
-  }
-  
+}
+
+
+/* буква */
+.char {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(8px);
+    animation: charIn 0.45s ease forwards;
+}
+
+@keyframes charIn {
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* убираем прыжки */
+.hero__title,
+.hero__description {
+    overflow: hidden;
+}
+
+/* accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .char {
+        animation: none;
+        opacity: 1;
+        filter: none;
+    }
+}

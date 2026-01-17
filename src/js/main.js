@@ -1,3 +1,5 @@
+// Animation speed configuration
+
 initMobileMenu();
 initHeroTabs();
 
@@ -58,7 +60,10 @@ function initMobileMenu() {
 
   // Close menu on Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu.classList.contains('mobile-menu_active')) {
+    if (
+      e.key === 'Escape' &&
+      mobileMenu.classList.contains('mobile-menu_active')
+    ) {
       closeMenu();
       burgerBtn.focus();
     }
@@ -72,7 +77,7 @@ function initMobileMenu() {
 
     if (e.key === 'Tab') {
       const focusableElements = mobileMenu.querySelectorAll(
-        'a, button, [tabindex]:not([tabindex="-1"])'
+        'a, button, [tabindex]:not([tabindex="-1"])',
       );
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
@@ -105,11 +110,11 @@ function initHeroTabs() {
     tabContents.forEach((content) => {
       const contentTabIndex = content.getAttribute('data-tab');
       const isFlowers = content.classList.contains('hero__flowers');
-      
+
       if (contentTabIndex === tabIndexStr) {
         content.classList.add('hero__tab-content_active');
         content.setAttribute('aria-hidden', 'false');
-        
+
         // Restart animation for flowers when switching tabs
         if (isFlowers && content.classList.contains('animate__animated')) {
           // Remove and re-add animation classes to restart animation
@@ -118,6 +123,20 @@ function initHeroTabs() {
           void content.offsetWidth;
           content.classList.add('animate__fadeInRight');
         }
+
+        // Apply text animation to visible content in active tab
+        setTimeout(() => {
+          const titleElements = content.querySelectorAll('.hero__title i');
+          const descriptionElements =
+            content.querySelectorAll('.hero__description');
+
+          titleElements.forEach((el) =>
+            applyBlurAnimation(el, ANIMATION_CONFIG.title),
+          );
+          descriptionElements.forEach((el) =>
+            applyBlurAnimation(el, ANIMATION_CONFIG.description),
+          );
+        }, 50);
       } else {
         content.classList.remove('hero__tab-content_active');
         content.setAttribute('aria-hidden', 'true');
@@ -168,9 +187,11 @@ function initHeroTabs() {
 
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        targetIndex = currentIndex > 0 ? currentIndex - 1 : tabButtons.length - 1;
+        targetIndex =
+          currentIndex > 0 ? currentIndex - 1 : tabButtons.length - 1;
         const targetButton = Array.from(tabButtons).find(
-          (btn) => parseInt(btn.getAttribute('data-tab-index'), 10) === targetIndex
+          (btn) =>
+            parseInt(btn.getAttribute('data-tab-index'), 10) === targetIndex,
         );
         if (targetButton) {
           targetButton.focus();
@@ -178,9 +199,11 @@ function initHeroTabs() {
         }
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
-        targetIndex = currentIndex < tabButtons.length - 1 ? currentIndex + 1 : 0;
+        targetIndex =
+          currentIndex < tabButtons.length - 1 ? currentIndex + 1 : 0;
         const targetButton = Array.from(tabButtons).find(
-          (btn) => parseInt(btn.getAttribute('data-tab-index'), 10) === targetIndex
+          (btn) =>
+            parseInt(btn.getAttribute('data-tab-index'), 10) === targetIndex,
         );
         if (targetButton) {
           targetButton.focus();
@@ -189,7 +212,7 @@ function initHeroTabs() {
       } else if (e.key === 'Home') {
         e.preventDefault();
         const firstButton = Array.from(tabButtons).find(
-          (btn) => parseInt(btn.getAttribute('data-tab-index'), 10) === 0
+          (btn) => parseInt(btn.getAttribute('data-tab-index'), 10) === 0,
         );
         if (firstButton) {
           firstButton.focus();
@@ -199,7 +222,8 @@ function initHeroTabs() {
         e.preventDefault();
         const lastIndex = tabButtons.length - 1;
         const lastButton = Array.from(tabButtons).find(
-          (btn) => parseInt(btn.getAttribute('data-tab-index'), 10) === lastIndex
+          (btn) =>
+            parseInt(btn.getAttribute('data-tab-index'), 10) === lastIndex,
         );
         if (lastButton) {
           lastButton.focus();
@@ -209,3 +233,88 @@ function initHeroTabs() {
     });
   });
 }
+
+// Helper function to apply blur animation to a single element
+function applyBlurAnimation(el, options = {}) {
+  if (!el || el.querySelector('span[class^="char-"]')) return; // Already animated
+
+  const blurEnabled = options.blur !== false; // default true
+
+  // If blur is disabled, don't apply animation
+  if (!blurEnabled) return;
+
+  const uniqueClass = `char-${Math.floor(Math.random() * 100000)}`;
+
+  // Animation speed variables
+  const charDelay = options.charDelay || 0.03; // Delay between characters in seconds
+
+  // Create CSS styles only once (keyframes are the same for all)
+  if (!document.getElementById('animateText-style')) {
+    const style = document.createElement('style');
+    style.id = 'animateText-style';
+    style.textContent = `
+        [class^="char-"] {
+          display: inline-block;
+          opacity: 0;
+          filter: blur(10px);
+          animation: blur-in 0.45s ease forwards;
+        }
+        @keyframes blur-in {
+          to { opacity: 1; filter: blur(0); }
+        }
+      `;
+    document.head.appendChild(style);
+  }
+
+  const text = el.textContent.trim();
+  if (!text) return;
+
+  el.innerHTML = '';
+
+  [...text].forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.className = uniqueClass;
+    // Apply individual animation delay and duration for each element
+    span.style.animationDelay = `${i * charDelay}s`;
+    el.appendChild(span);
+  });
+}
+
+function animateText(selector, options = {}) {
+  const elements = document.querySelectorAll(selector);
+  if (elements.length === 0) return;
+
+  const blurEnabled = options.blur !== false; // default true
+
+  if (!blurEnabled) return;
+
+  // Apply blur effect only to visible elements
+  elements.forEach((el) => {
+    // Check if element is inside active tab
+    const parentTab = el.closest('.hero__tab-content');
+    const isInActiveTab =
+      !parentTab || parentTab.classList.contains('hero__tab-content_active');
+
+    if (isInActiveTab) {
+      applyBlurAnimation(el, options);
+    }
+  });
+}
+
+const ANIMATION_CONFIG = {
+  title: {
+    blur: true,
+    charDelay: 0.03, // Delay between characters in seconds
+  },
+  description: {
+    blur: true,
+    charDelay: 0.03, // Delay between characters in seconds
+  },
+};
+
+// Apply animation only to visible elements on page load
+setTimeout(() => {
+  animateText('.hero__title i', ANIMATION_CONFIG.title);
+  animateText('.hero__description', ANIMATION_CONFIG.description);
+}, 100);
