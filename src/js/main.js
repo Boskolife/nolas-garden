@@ -1,4 +1,27 @@
 // Animation speed configuration
+const ANIMATION_CONFIG = {
+  title: {
+    blur: true,
+    charDelay: 0.03, // Delay between characters in seconds
+  },
+  description: {
+    blur: true,
+    charDelay: 0.03, // Delay between characters in seconds
+  },
+};
+
+if (typeof window.WOW !== 'undefined') {
+  new window.WOW({
+    callback: function(box) {
+      // Apply text animation when element becomes visible
+      if (box.classList.contains('teams__title')) {
+        setTimeout(() => {
+          animateText('.teams__title');
+        }, 100);
+      }
+    }
+  }).init();
+}
 
 initMobileMenu();
 initHeroTabs();
@@ -315,30 +338,21 @@ function animateText(selector, options = {}) {
 
   // Apply blur effect only to visible elements
   elements.forEach((el) => {
-    // Check if element is inside active tab
+    // Check if element is inside active tab (for hero sections)
     const parentTab = el.closest('.hero__tab-content');
     const isInActiveTab =
       !parentTab || parentTab.classList.contains('hero__tab-content_active');
 
-    if (isInActiveTab) {
+    // For non-hero elements (like teams__title), apply animation directly
+    if (isInActiveTab || !parentTab) {
       applyBlurAnimation(el, options);
     }
   });
 }
 
-const ANIMATION_CONFIG = {
-  title: {
-    blur: true,
-    charDelay: 0.03, // Delay between characters in seconds
-  },
-  description: {
-    blur: true,
-    charDelay: 0.03, // Delay between characters in seconds
-  },
-};
-
 // Apply animation only to visible elements on page load
 setTimeout(() => {
   animateText('.hero__title i', ANIMATION_CONFIG.title);
   animateText('.hero__description', ANIMATION_CONFIG.description);
+  // teams__title animation will be triggered by WOW.js when element becomes visible
 }, 100);
