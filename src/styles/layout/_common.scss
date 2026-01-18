@@ -522,3 +522,141 @@
         }
     }
 }
+
+.delivery {
+    @include adaptive-value("padding-top", 100, 28, 1);
+    @include adaptive-value("padding-bottom", 75, 14, 1);
+    background-color: $white-f8;
+    position: relative;
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        height: auto;
+        z-index: 1;
+
+        @include media ("<tablet") {
+            height: 100%;
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            @include media ("<tablet") {
+                object-position: 0 100%;
+            }
+        }
+    }
+
+    &__title {
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+
+        i {
+            display: inline-block;
+            font-style: normal;
+
+            &:first-child {
+                margin-left: 150px;
+
+                @include media ("<tablet") {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    &__inner {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        column-gap: 32px;
+        position: relative;
+        z-index: 2;
+
+        @include media ("<tablet") {
+            flex-direction: column-reverse;
+        }
+    }
+
+    &__image {
+        margin-bottom: 25px;
+    }
+
+    &__content {
+        max-width: 640px;
+        width: 100%;
+
+        @include media ("<tablet") {
+            max-width: 100%;
+        }
+    }
+
+    &__description {
+        @include adaptive-value("font-size", 18, 16, 1);
+        color: $black;
+        line-height: 140%;
+        margin-bottom: 22px;
+    }
+
+    &__form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 16px;
+        border: 1px solid #D8D5D0 !important;
+        border-radius: 4px !important;
+        caret-color: #D8D5D0 !important;
+        @include adaptive-value("font-size", 17, 14, 1);
+        color: $black;
+
+        @include placeholder {
+            color: $gray !important;
+        }
+
+        @include media ("<tablet") {
+            padding: 14px 16px;
+        }
+    }
+
+    &__button {
+        @include media ("<tablet") {
+           padding: 14px 20px;
+        }
+    }
+
+    &__map {
+        width: 100%;
+        height: 296px;
+        margin-bottom: 20px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__link {
+        color: $rose;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

@@ -10,13 +10,76 @@ const ANIMATION_CONFIG = {
   },
 };
 
+// Create CSS styles only once
+if (!document.getElementById('animateText-style')) {
+  const style = document.createElement('style');
+  style.id = 'animateText-style';
+  style.textContent = `
+      [class^="char-"] {
+        display: inline-block;
+        opacity: 0;
+        filter: blur(10px);
+        animation-play-state: paused;
+      }
+      [class^="char-"].animate-char-active {
+        animation: blur-in 0.45s ease forwards;
+      }
+      @keyframes blur-in {
+        from { opacity: 0; filter: blur(10px); }
+        to { opacity: 1; filter: blur(0); }
+      }
+    `;
+  document.head.appendChild(style);
+}
+
+// Helper function to create character spans (without starting animation)
+function createCharSpans(el, options = {}) {
+  if (!el || el.querySelector('span[class^="char-"]')) return; // Already created
+
+  const blurEnabled = options.blur !== false; // default true
+  if (!blurEnabled) return;
+
+  const uniqueClass = `char-${Math.floor(Math.random() * 100000)}`;
+  const charDelay = options.charDelay || 0.03; // Delay between characters in seconds
+
+  const text = el.textContent.trim();
+  if (!text) return;
+
+  el.innerHTML = '';
+
+  [...text].forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.className = uniqueClass;
+    span.style.animationDelay = `${i * charDelay}s`;
+    el.appendChild(span);
+  });
+}
+
+// Helper function to start animation for already created elements
+function startBlurAnimation(el) {
+  if (!el) return;
+  
+  const charSpans = el.querySelectorAll('span[class^="char-"]');
+  charSpans.forEach((span) => {
+    span.classList.add('animate-char-active');
+  });
+}
+
 if (typeof window.WOW !== 'undefined') {
   new window.WOW({
     callback: function(box) {
-      // Apply text animation when element becomes visible
+      // Start text animation when element becomes visible
       if (box.classList.contains('teams__title')) {
         setTimeout(() => {
-          animateText('.teams__title');
+          const titleEl = document.querySelector('.teams__title');
+          if (titleEl) startBlurAnimation(titleEl);
+        }, 100);
+      }
+      if (box.classList.contains('delivery__title')) {
+        setTimeout(() => {
+          const titleEls = document.querySelectorAll('.delivery__title i');
+          titleEls.forEach((el) => startBlurAnimation(el));
         }, 100);
       }
     }
@@ -152,7 +215,7 @@ function initHeroTabs() {
           content.classList.add('animate__fadeInRight');
         }
 
-        // Apply text animation to visible content in active tab
+        // Start text animation for visible content in active tab
         setTimeout(() => {
           const titleElements = content.querySelectorAll('.hero__title i');
           const descriptionElements =
@@ -283,49 +346,18 @@ function initHeroTabs() {
 
 // Helper function to apply blur animation to a single element
 function applyBlurAnimation(el, options = {}) {
-  if (!el || el.querySelector('span[class^="char-"]')) return; // Already animated
+  if (!el) return;
 
   const blurEnabled = options.blur !== false; // default true
-
-  // If blur is disabled, don't apply animation
   if (!blurEnabled) return;
 
-  const uniqueClass = `char-${Math.floor(Math.random() * 100000)}`;
-
-  // Animation speed variables
-  const charDelay = options.charDelay || 0.03; // Delay between characters in seconds
-
-  // Create CSS styles only once (keyframes are the same for all)
-  if (!document.getElementById('animateText-style')) {
-    const style = document.createElement('style');
-    style.id = 'animateText-style';
-    style.textContent = `
-        [class^="char-"] {
-          display: inline-block;
-          opacity: 0;
-          filter: blur(10px);
-          animation: blur-in 0.45s ease forwards;
-        }
-        @keyframes blur-in {
-          to { opacity: 1; filter: blur(0); }
-        }
-      `;
-    document.head.appendChild(style);
+  // Create spans if they don't exist
+  if (!el.querySelector('span[class^="char-"]')) {
+    createCharSpans(el, options);
   }
 
-  const text = el.textContent.trim();
-  if (!text) return;
-
-  el.innerHTML = '';
-
-  [...text].forEach((char, i) => {
-    const span = document.createElement('span');
-    span.textContent = char === ' ' ? '\u00A0' : char;
-    span.className = uniqueClass;
-    // Apply individual animation delay and duration for each element
-    span.style.animationDelay = `${i * charDelay}s`;
-    el.appendChild(span);
-  });
+  // Start animation
+  startBlurAnimation(el);
 }
 
 function animateText(selector, options = {}) {
@@ -350,9 +382,26 @@ function animateText(selector, options = {}) {
   });
 }
 
-// Apply animation only to visible elements on page load
+// Create character spans for all text elements on page load
 setTimeout(() => {
+  // Create spans for hero elements (will be animated when tab becomes active)
+  document.querySelectorAll('.hero__title i').forEach((el) => {
+    createCharSpans(el, ANIMATION_CONFIG.title);
+  });
+  document.querySelectorAll('.hero__description').forEach((el) => {
+    createCharSpans(el, ANIMATION_CONFIG.description);
+  });
+  
+  // Create spans for WOW elements (will be animated when visible)
+  const teamsTitle = document.querySelector('.teams__title');
+  if (teamsTitle) {
+    createCharSpans(teamsTitle, ANIMATION_CONFIG.title);
+  }
+  document.querySelectorAll('.delivery__title i').forEach((el) => {
+    createCharSpans(el, ANIMATION_CONFIG.title);
+  });
+  
+  // Start animation for visible hero elements
   animateText('.hero__title i', ANIMATION_CONFIG.title);
   animateText('.hero__description', ANIMATION_CONFIG.description);
-  // teams__title animation will be triggered by WOW.js when element becomes visible
 }, 100);

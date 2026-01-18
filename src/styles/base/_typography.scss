@@ -32,7 +32,7 @@ h1,
 
 h2,
 .h2 {
-    font-size: $h2-font-size;
+    @include adaptive-value("font-size", 80, 40, 1);
 }
 
 h3,
