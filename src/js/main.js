@@ -1,3 +1,4 @@
+
 // Animation speed configuration
 const ANIMATION_CONFIG = {
   title: {
@@ -79,6 +80,12 @@ if (typeof window.WOW !== 'undefined') {
       if (box.classList.contains('delivery__title')) {
         setTimeout(() => {
           const titleEls = document.querySelectorAll('.delivery__title i');
+          titleEls.forEach((el) => startBlurAnimation(el));
+        }, 100);
+      }
+      if (box.classList.contains('gallery__title')) {
+        setTimeout(() => {
+          const titleEls = document.querySelectorAll('.gallery__title i');
           titleEls.forEach((el) => startBlurAnimation(el));
         }, 100);
       }
@@ -400,8 +407,30 @@ setTimeout(() => {
   document.querySelectorAll('.delivery__title i').forEach((el) => {
     createCharSpans(el, ANIMATION_CONFIG.title);
   });
+  document.querySelectorAll('.gallery__title i').forEach((el) => {
+    createCharSpans(el, ANIMATION_CONFIG.title);
+  });
   
   // Start animation for visible hero elements
   animateText('.hero__title i', ANIMATION_CONFIG.title);
   animateText('.hero__description', ANIMATION_CONFIG.description);
 }, 100);
+
+
+if (typeof window.Swiper !== 'undefined') {
+  new window.Swiper('.gallery__swiper', {
+  // Optional parameters
+  effect: "cards",
+  direction: 'horizontal',
+  cardsEffect:{
+    perSlideRotate:3,
+    perSlideOffset:5,
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next.gallery__swiper-button-next',
+    prevEl: '.swiper-button-prev.gallery__swiper-button-prev',
+  },
+  });
+}

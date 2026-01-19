@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nola`s Garden</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
   <link rel="stylesheet" href="/styles/main.scss">
 </head>
 
@@ -190,7 +191,7 @@
       </div>
     </section>
     <section class="delivery">
-      <picture class="delivery__bg">
+      <picture class="delivery__bg wow animate__animated animate__zoomIn">
         <img src="./images/line.svg" width="100%" height="100%" alt="Delivery">
       </picture>
       <div class="container">
@@ -203,26 +204,95 @@
             <img src="./images/delivery-img.webp" width="457" height="183" alt="Delivery">
           </div>
           <div class="delivery__content">
-            <p class="delivery__description">We proudly serveLos Angeles and parts of Orange County.
+            <p class="delivery__description wow animate__animated animate__fadeInUp">We proudly
+              serveLos Angeles and parts of Orange County.
               Custom installations and recurring floral programs — verified via ZIP lookup.</p>
             <form action="#" class="delivery__form">
-              <input type="text" class="delivery__input" placeholder="Enter your ZIP code">
-              <button type="submit" class="delivery__button btn btn--primary">Check ZIP</button>
+              <input type="text" class="delivery__input wow animate__animated animate__fadeInUp" placeholder="Enter your ZIP code">
+              <button type="submit" class="delivery__button btn btn--primary wow animate__animated animate__fadeInUp">Check ZIP</button>
             </form>
-            <div class="delivery__map">
-              <picture class="map__image">
-                <img src="./images/map.png" width="100%" height="100%" alt="Map">
-              </picture>
+            <div class="delivery__map wow animate__animated animate__fadeInUp">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d88979.14565016812!2d-118.32751685185467!3d34.02572384419812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z0JvQvtGBLdCQ0L3QtNC20LXQu9C10YEsINCa0LDQu9GW0YTQvtGA0L3RltGPLCDQodC_0L7Qu9GD0YfQtdC90ZYg0KjRgtCw0YLQuCDQkNC80LXRgNC40LrQuA!5e0!3m2!1suk!2sua!4v1768813702465!5m2!1suk!2sua"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <p class="delivery__description">Serving Los Angeles and parts of Orange County. Not
+            <p class="delivery__description wow animate__animated animate__fadeInUp">Serving Los Angeles and parts of Orange County. Not
               seeing your location? <br> <a href="#" class="delivery__link">Get in touch</a> — we’re
               always happy to explore options</p>
           </div>
         </div>
       </div>
     </section>
+    <section class="gallery">
+      <div class="container">
+        <div class="gallery__content">
+          <div class="gallery__inner">
+            <div class="gallery__slider">
+              <div class="gallery__swiper swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <picture class="gallery__image">
+                      <img src="./images/gallery/gallery-img-1.webp" width="100%" height="100%"
+                        alt="Gallery">
+                    </picture>
+                  </div>
+                  <div class="swiper-slide">
+                    <picture class="gallery__image">
+                      <img src="./images/gallery/gallery-img-2.webp" width="100%" height="100%"
+                        alt="Gallery">
+                    </picture>
+                  </div>
+                  <div class="swiper-slide">
+                    <picture class="gallery__image">
+                      <img src="./images/gallery/gallery-img-3.webp" width="100%" height="100%"
+                        alt="Gallery">
+                    </picture>
+                  </div>
+                  <div class="swiper-slide">
+                    <picture class="gallery__image">
+                      <img src="./images/gallery/gallery-img-4.webp" width="100%" height="100%"
+                        alt="Gallery">
+                    </picture>
+                  </div>
+                  <div class="swiper-slide">
+                    <picture class="gallery__image">
+                      <img src="./images/gallery/gallery-img-5.webp" width="100%" height="100%"
+                        alt="Gallery">
+                    </picture>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="gallery__text">
+              <h2 class="gallery__title wow">
+                <i>A Glimpse Into</i>
+                <i>Our Work</i>
+              </h2>
+              <div class="gallery__swiper-buttons">
+                <div class="swiper-button-prev gallery__swiper-button-prev">
+                  <img src="./images/arrow.svg" alt="image not found" width="22" height="12">
+                </div>
+                <div class="swiper-button-next gallery__swiper-button-next">
+                  <img src="./images/arrow.svg" alt="image not found" width="22" height="12">
+                </div>
+              </div>
+              <div class="gallery__text-block wow animate__animated animate__fadeInUp">
+                <p class="gallery__description">
+                  From elegant office displays to large-scale corporate events — see what we’ve
+                  created
+                  across LA.
+                </p>
+                <a href="#" class="gallery__button btn btn--primary">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   <script src="/js/wow.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script type="module" src="/js/main.js"></script>
 </body>
 
