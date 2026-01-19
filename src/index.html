@@ -10,10 +10,11 @@
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link visually-hidden">Skip to main content</a>
   {{> header }}
   {{> mobile-menu }}
   <div id="wrapper">
-    <main class="main">
+    <main class="main" id="main-content">
       <section class="hero">
         <div class="container">
           <span class="hero__tip">Premium Floral Studio <br> in Los Angeles</span>
@@ -40,22 +41,22 @@
             <img src="./images/hero/flowers-3.webp" width="100%" height="100%" alt="Flowers">
           </picture>
           <video class="hero__video hero__tab-content hero__tab-content_active" data-tab="0"
-            width="100%" height="100%" muted aria-hidden="false">
+            width="100%" height="100%" muted aria-hidden="false" aria-label="Floral arrangements for restaurants and workspaces">
             <source src="./video/cat-video-1.mp4" type="video/mp4">
             <source src="./video/cat-video-1.webm" type="video/webm">
           </video>
           <video class="hero__video hero__tab-content" data-tab="1" width="100%" height="100%" muted
-            aria-hidden="true">
+            aria-hidden="true" aria-label="Celebration floral arrangements">
             <source src="./video/cat-video-2.mp4" type="video/mp4">
             <source src="./video/cat-video-2.webm" type="video/webm">
           </video>
           <video class="hero__video hero__tab-content" data-tab="2" width="100%" height="100%" muted
-            aria-hidden="true">
+            aria-hidden="true" aria-label="Wedding and event floral designs">
             <source src="./video/cat-video-3.mp4" type="video/mp4">
             <source src="./video/cat-video-3.webm" type="video/webm">
           </video>
           <video class="hero__video hero__tab-content" data-tab="3" width="100%" height="100%" muted
-            aria-hidden="true">
+            aria-hidden="true" aria-label="Baby shower floral arrangements">
             <source src="./video/cat-video-4.mp4" type="video/mp4">
             <source src="./video/cat-video-4.webm" type="video/webm">
           </video>
@@ -65,13 +66,13 @@
             <div class="hero__tabs-buttons" role="tablist" aria-label="Hero content tabs">
               <button class="hero__tab-button" type="button" role="tab" aria-selected="true"
                 aria-controls="hero-tab-0" data-tab-index="1">Celebrations</button>
-              <div class="divider"></div>
+              <div class="divider" role="presentation" aria-hidden="true"></div>
               <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
                 aria-controls="hero-tab-1" data-tab-index="0">Workspaces</button>
-              <div class="divider"></div>
+              <div class="divider" role="presentation" aria-hidden="true"></div>
               <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
                 aria-controls="hero-tab-2" data-tab-index="2">Weddings</button>
-              <div class="divider"></div>
+              <div class="divider" role="presentation" aria-hidden="true"></div>
               <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
                 aria-controls="hero-tab-3" data-tab-index="3">Baby showers</button>
             </div>
@@ -165,32 +166,32 @@
           </h2>
           <div class="teams__inner">
             <div class="teams__item wow animate__animated animate__fadeIn">
-              <img src="./images/teams/team-1.webp" width="100%" height="100%" alt="Team">
+              <img src="./images/teams/team-1.webp" width="100%" height="100%" alt="">
             </div>
             <div class="teams__item wow animate__animated animate__fadeIn">
-              <img src="./images/teams/team-2.webp" width="100%" height="100%" alt="Team">
+              <img src="./images/teams/team-2.webp" width="100%" height="100%" alt="">
             </div>
             <div class="teams__item wow animate__animated animate__fadeIn">
-              <img src="./images/teams/team-3.webp" width="100%" height="100%" alt="Team">
+              <img src="./images/teams/team-3.webp" width="100%" height="100%" alt="">
             </div>
             <div class="teams__item wow animate__animated animate__fadeIn">
-              <img src="./images/teams/team-4.webp" width="100%" height="100%" alt="Team">
+              <img src="./images/teams/team-4.webp" width="100%" height="100%" alt="">
             </div>
             <div class="teams__item wow animate__animated animate__fadeIn">
-              <img src="./images/teams/team-5.webp" width="100%" height="100%" alt="Team">
+              <img src="./images/teams/team-5.webp" width="100%" height="100%" alt="">
             </div>
             <div class="teams__item wow animate__animated animate__fadeIn">
-              <img src="./images/teams/team-6.webp" width="100%" height="100%" alt="Team">
+              <img src="./images/teams/team-6.webp" width="100%" height="100%" alt="">
             </div>
             <div class="teams__item wow animate__animated animate__fadeIn">
-              <img src="./images/teams/team-7.webp" width="100%" height="100%" alt="Team">
+              <img src="./images/teams/team-7.webp" width="100%" height="100%" alt="">
             </div>
           </div>
         </div>
       </section>
       <section class="delivery">
         <picture class="delivery__bg wow animate__animated animate__zoomIn">
-          <img src="./images/line.svg" width="100%" height="100%" alt="Delivery">
+          <img src="./images/line.svg" width="100%" height="100%" alt="" aria-hidden="true">
         </picture>
         <div class="container">
           <h2 class="delivery__title wow">
@@ -199,15 +200,16 @@
           </h2>
           <div class="delivery__inner">
             <div class="delivery__image">
-              <img src="./images/delivery-img.webp" width="457" height="183" alt="Delivery">
+              <img src="./images/delivery-img.webp" width="457" height="183" alt="">
             </div>
             <div class="delivery__content">
               <p class="delivery__description wow animate__animated animate__fadeInUp">We proudly
                 serveLos Angeles and parts of Orange County.
                 Custom installations and recurring floral programs — verified via ZIP lookup.</p>
               <form action="#" class="delivery__form">
-                <input type="text" class="delivery__input wow animate__animated animate__fadeInUp"
-                  placeholder="Enter your ZIP code">
+                <label for="zip-code-input" class="visually-hidden">Enter your ZIP code</label>
+                <input type="text" id="zip-code-input" class="delivery__input wow animate__animated animate__fadeInUp"
+                  placeholder="Enter your ZIP code" aria-label="ZIP code" aria-required="true">
                 <button type="submit"
                   class="delivery__button btn btn--primary wow animate__animated animate__fadeInUp">Check
                   ZIP</button>
@@ -216,7 +218,7 @@
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d88979.14565016812!2d-118.32751685185467!3d34.02572384419812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z0JvQvtGBLdCQ0L3QtNC20LXQu9C10YEsINCa0LDQu9GW0YTQvtGA0L3RltGPLCDQodC_0L7Qu9GD0YfQtdC90ZYg0KjRgtCw0YLQuCDQkNC80LXRgNC40LrQuA!5e0!3m2!1suk!2sua!4v1768813702465!5m2!1suk!2sua"
                   width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  referrerpolicy="no-referrer-when-downgrade" title="Map showing Los Angeles and Orange County service area"></iframe>
               </div>
               <p class="delivery__description wow animate__animated animate__fadeInUp">Serving Los
                 Angeles and parts of Orange County. Not
@@ -237,31 +239,31 @@
                     <div class="swiper-slide">
                       <picture class="gallery__image">
                         <img src="./images/gallery/gallery-img-1.webp" width="100%" height="100%"
-                          alt="Gallery">
+                          alt="Floral arrangement example">
                       </picture>
                     </div>
                     <div class="swiper-slide">
                       <picture class="gallery__image">
                         <img src="./images/gallery/gallery-img-2.webp" width="100%" height="100%"
-                          alt="Gallery">
+                          alt="Floral arrangement example">
                       </picture>
                     </div>
                     <div class="swiper-slide">
                       <picture class="gallery__image">
                         <img src="./images/gallery/gallery-img-3.webp" width="100%" height="100%"
-                          alt="Gallery">
+                          alt="Floral arrangement example">
                       </picture>
                     </div>
                     <div class="swiper-slide">
                       <picture class="gallery__image">
                         <img src="./images/gallery/gallery-img-4.webp" width="100%" height="100%"
-                          alt="Gallery">
+                          alt="Floral arrangement example">
                       </picture>
                     </div>
                     <div class="swiper-slide">
                       <picture class="gallery__image">
                         <img src="./images/gallery/gallery-img-5.webp" width="100%" height="100%"
-                          alt="Gallery">
+                          alt="Floral arrangement example">
                       </picture>
                     </div>
                   </div>
@@ -273,12 +275,12 @@
                   <i>Our Work</i>
                 </h2>
                 <div class="gallery__swiper-buttons">
-                  <div class="swiper-button-prev gallery__swiper-button-prev">
-                    <img src="./images/arrow.svg" alt="image not found" width="22" height="12">
-                  </div>
-                  <div class="swiper-button-next gallery__swiper-button-next">
-                    <img src="./images/arrow.svg" alt="image not found" width="22" height="12">
-                  </div>
+                  <button class="swiper-button-prev gallery__swiper-button-prev" aria-label="Previous gallery image" type="button">
+                    <img src="./images/arrow.svg" alt="" width="22" height="12" aria-hidden="true">
+                  </button>
+                  <button class="swiper-button-next gallery__swiper-button-next" aria-label="Next gallery image" type="button">
+                    <img src="./images/arrow.svg" alt="" width="22" height="12" aria-hidden="true">
+                  </button>
                 </div>
                 <div class="gallery__text-block wow animate__animated animate__fadeInUp">
                   <p class="gallery__description">
@@ -304,7 +306,7 @@
           <div class="solutions__inner">
             <div class="solutions__item">
               <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                <img src="./images/gallery/gallery-img-12.webp" alt="" width="100%"
                   height="100%">
               </picture>
               <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
@@ -320,7 +322,7 @@
             </div>
             <div class="solutions__item">
               <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                <img src="./images/gallery/gallery-img-12.webp" alt="" width="100%"
                   height="100%">
               </picture>
               <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
@@ -335,7 +337,7 @@
             </div>
             <div class="solutions__item">
               <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                <img src="./images/gallery/gallery-img-12.webp" alt="" width="100%"
                   height="100%">
               </picture>
               <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
@@ -351,7 +353,7 @@
             </div>
             <div class="solutions__item">
               <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                <img src="./images/gallery/gallery-img-12.webp" alt="" width="100%"
                   height="100%">
               </picture>
               <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
@@ -365,7 +367,7 @@
             </div>
             <div class="solutions__item">
               <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                <img src="./images/gallery/gallery-img-12.webp" alt="" width="100%"
                   height="100%">
               </picture>
               <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
@@ -397,14 +399,14 @@
             </div>
             <div class="propose__content-block block-bottom">
               <picture class="propose__content-block-bottom-image image-1">
-                <img src="./images/propose-2.webp" alt="image not found" width="100%" height="100%">
+                <img src="./images/propose-2.webp" alt="" width="100%" height="100%">
               </picture>
               <div class="propose__content-block-text">
                 <h3 class="propose__content-block-bottom-title propose__subtitle">In her honor,
                   Nola’s Garden was created — a floral studio built on love, empathy, and intention.
                 </h3>
                 <picture class="propose__content-block-bottom-image image-2">
-                  <img src="./images/propose-1.webp" alt="image not found" width="100%"
+                  <img src="./images/propose-1.webp" alt="" width="100%"
                     height="100%">
                 </picture>
                 <p class="propose__description second wow animate__animated animate__fadeInUp">
@@ -426,26 +428,26 @@
             <div class="contact__content">
               <h4 class="contact__title">Contact us</h4>
               <div class="contact__links">
-                <a href="#" target="_blank" class="contact__link">
-                  <img src="./images/instagram.svg" alt="image not found" width="24" height="24">
+                <a href="#" target="_blank" class="contact__link" aria-label="Follow us on Instagram">
+                  <img src="./images/instagram.svg" alt="" width="24" height="24" aria-hidden="true">
                   <span>@nolasgarden_losangeles</span>
                 </a>
-                <a href="tel:(714)794-9544" class="contact__link">
-                  <img src="./images/phone.svg" alt="image not found" width="24" height="24">
+                <a href="tel:(714)794-9544" class="contact__link" aria-label="Call us">
+                  <img src="./images/phone.svg" alt="" width="24" height="24" aria-hidden="true">
                   <span>(714)794-9544</span>
                 </a>
-                <a href="mailto:nolasgarden.losangeles@gmail.com" class="contact__link">
-                  <img src="./images/mail.svg" alt="image not found" width="24" height="24">
+                <a href="mailto:nolasgarden.losangeles@gmail.com" class="contact__link" aria-label="Send us an email">
+                  <img src="./images/mail.svg" alt="" width="24" height="24" aria-hidden="true">
                   <span>nolasgarden.losangeles@gmail.com</span>
                 </a>
                 <p class="contact__link">
-                  <img src="./images/location.svg" alt="image not found" width="24" height="24">
+                  <img src="./images/location.svg" alt="" width="24" height="24" aria-hidden="true">
                   <span>Inglewood, CA</span>
                 </p>
               </div>
             </div>
             <picture class="contact__logo">
-              <img src="./images/big-logo.webp" alt="image not found" width="229" height="157">
+              <img src="./images/big-logo.webp" alt="Nola's Garden logo" width="229" height="157">
             </picture>
           </div>
       </section>
