@@ -644,6 +644,7 @@
 
     &__button {
         animation-delay: 0.3s;
+
         @include media ("<tablet") {
             padding: 14px 20px;
         }
@@ -786,7 +787,7 @@
 
             &:last-child {
                 text-align: end;
-                
+
                 @include media ("<desktop") {
                     margin-right: 60px;
                 }
@@ -817,5 +818,128 @@
         @include media ("<desktop") {
             display: none;
         }
+    }
+}
+
+.solutions {
+    padding-top: 14px;
+    @include adaptive-value("padding-bottom", 100, 60, 1);
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 7px;
+
+        i {
+            font-style: normal;
+
+            &:first-child {
+                margin-left: 45px;
+
+                @include media ("<tablet") {
+                    margin-left: 0;
+                }
+            }
+
+            &:last-child {
+                margin-left: 150px;
+
+                @include media ("<tablet") {
+                    margin-left: 60px;
+                }
+            }
+        }
+    }
+
+    &__description {
+        @include adaptive-value("font-size", 18, 16, 1);
+        margin-left: 150px;
+
+        @include media ("<tablet") {
+            margin-left: 60px;
+        }
+    }
+
+    &__inner {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        counter-reset: num;
+        @include adaptive-value("margin-bottom", 60, 35, 1);
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        column-gap: 20px;
+        position: relative;
+        width: 100%;
+        height: 580px;
+        overflow: hidden;
+        @include adaptive-value("padding", 40, 15, 1);
+
+        &:nth-child(n+10) {
+            .solutions__item-number {
+
+                &::before {
+                    content: counter(num);
+                }
+            }
+        }
+
+        &-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &-number {
+            counter-increment: num;
+
+            &::before {
+                content: "0"counter(num);
+                font-size: 44px;
+                color: #F8F7F5;
+                line-height: 90%;
+                letter-spacing: -0.01em;
+                font-family: "Instrument Serif", serif;
+            }
+        }
+
+        &-text-block {
+            max-width: 530px;
+            width: 100%;
+            background-color: #F8F7F5;
+            padding: 24px;
+
+            &-title {
+                margin-bottom: 16px;
+            }
+
+            &-description {
+                @include adaptive-value("font-size", 19, 16, 1);
+                color: $black;
+                line-height: 140%;
+            }
+        }
+    }
+
+    &__button {
+        display: block;
+        margin: 0 auto;
+        width: max-content;
     }
 }
