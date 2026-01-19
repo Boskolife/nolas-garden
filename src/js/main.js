@@ -458,3 +458,166 @@ if (typeof window.Swiper !== 'undefined') {
   },
   });
 }
+
+// Modal management functions
+function initModals() {
+  const successModal = document.getElementById('succes-modal');
+  const failureModal = document.getElementById('failure-modal');
+  const successBackdrop = document.getElementById('succes-modal-backdrop');
+  const failureBackdrop = document.getElementById('failure-modal-backdrop');
+
+  if (!successModal || !failureModal || !successBackdrop || !failureBackdrop) {
+    return;
+  }
+
+  // Function to open modal
+  function openModal(modal, backdrop) {
+    backdrop.setAttribute('aria-hidden', 'false');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    
+    // Focus first focusable element in modal
+    const firstFocusable = modal.querySelector('button, a, [tabindex]:not([tabindex="-1"])');
+    if (firstFocusable) {
+      firstFocusable.focus();
+    }
+  }
+
+  // Function to close modal
+  function closeModal(modal, backdrop) {
+    backdrop.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Close buttons
+  const successCloseBtn = successModal.querySelector('.modal__close-btn');
+  const failureCloseBtn = failureModal.querySelector('.modal__close-btn');
+
+  if (successCloseBtn) {
+    successCloseBtn.addEventListener('click', () => {
+      closeModal(successModal, successBackdrop);
+    });
+  }
+
+  if (failureCloseBtn) {
+    failureCloseBtn.addEventListener('click', () => {
+      closeModal(failureModal, failureBackdrop);
+    });
+  }
+
+  // Close on backdrop click
+  successBackdrop.addEventListener('click', () => {
+    closeModal(successModal, successBackdrop);
+  });
+
+  failureBackdrop.addEventListener('click', () => {
+    closeModal(failureModal, failureBackdrop);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (successModal.getAttribute('aria-hidden') === 'false') {
+        closeModal(successModal, successBackdrop);
+      }
+      if (failureModal.getAttribute('aria-hidden') === 'false') {
+        closeModal(failureModal, failureBackdrop);
+      }
+    }
+  });
+
+  // Export functions to window for external use
+  window.openSuccessModal = () => openModal(successModal, successBackdrop);
+  window.openFailureModal = () => openModal(failureModal, failureBackdrop);
+  window.closeSuccessModal = () => closeModal(successModal, successBackdrop);
+  window.closeFailureModal = () => closeModal(failureModal, failureBackdrop);
+}
+
+// Initialize modals when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initModals);
+} else {
+  initModals();
+}
+
+// Valid ZIP codes list
+const VALID_ZIP_CODES = [
+  '90003', '90043', '90044', '90045', '90047', '90061', '90094',
+  '90220', '90221', '90222', '90230', '90232', '90245', '90247',
+  '90248', '90249', '90250', '90254', '90260', '90266', '90277',
+  '90278', '90292', '90293', '90301', '90302', '90303', '90304',
+  '90305', '90501', '90502', '90503', '90504', '90505', '90710',
+  '90717', '90744', '90745', '90746', '90755', '90802', '90804',
+  '90806', '90810', '90813'
+];
+
+// Initialize delivery form
+function initDeliveryForm() {
+  const deliveryForm = document.querySelector('.delivery__form');
+  const zipInput = document.querySelector('.delivery__input');
+
+  if (!deliveryForm || !zipInput) {
+    return;
+  }
+
+  // Validate ZIP code format
+  function isValidZipFormat(zipCode) {
+    // Check if ZIP code contains only digits and has exactly 5 characters
+    return /^\d{5}$/.test(zipCode);
+  }
+
+  // Restrict input to numbers only
+  zipInput.addEventListener('input', (e) => {
+    // Remove any non-digit characters
+    e.target.value = e.target.value.replace(/\D/g, '');
+    // Limit to 5 digits
+    if (e.target.value.length > 5) {
+      e.target.value = e.target.value.slice(0, 5);
+    }
+  });
+
+  // Prevent non-numeric characters on paste
+  zipInput.addEventListener('paste', (e) => {
+    e.preventDefault();
+    const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+    const numericOnly = pastedText.replace(/\D/g, '').slice(0, 5);
+    zipInput.value = numericOnly;
+  });
+
+  deliveryForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Get and trim ZIP code value
+    const zipCode = zipInput.value.trim();
+
+    // Validate ZIP code format first
+    if (!isValidZipFormat(zipCode)) {
+      // If format is invalid, show failure modal
+      if (window.openFailureModal) {
+        window.openFailureModal();
+      }
+      return;
+    }
+
+    // Check if ZIP code is in the valid list
+    if (VALID_ZIP_CODES.includes(zipCode)) {
+      // Open success modal
+      if (window.openSuccessModal) {
+        window.openSuccessModal();
+      }
+    } else {
+      // Open failure modal
+      if (window.openFailureModal) {
+        window.openFailureModal();
+      }
+    }
+  });
+}
+
+// Initialize delivery form when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDeliveryForm);
+} else {
+  initDeliveryForm();
+}

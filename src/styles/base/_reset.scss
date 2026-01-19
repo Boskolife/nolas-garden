@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 *,
@@ -14,7 +15,7 @@ html {
 
 body {
     color: $base-text-color;
-    background: $base-background-color;
+    background-color: #F8F7F5;
     font: #{$font-size-base}/#{$line-height-base} $base-font-family;
     min-width: $base-min-width;
     -webkit-font-smoothing: antialiased;
