@@ -81,6 +81,10 @@ const WOW_ANIMATION_CONFIG = {
   'solutions__title': { selector: '.solutions__title i', isMultiple: true },
   'propose__title': { selector: '.propose__title i', isMultiple: true },
   'propose__subtitle': { selector: '.propose__subtitle', isMultiple: true },
+  'block-first-title': { selector: '.block-first-title', isMultiple: false },
+  'block-second-title': { selector: '.block-second-title', isMultiple: false },
+  'block-third-title': { selector: '.block-third-title', isMultiple: false },
+  'block-fourth-title': { selector: '.block-fourth-title', isMultiple: false },
 };
 
 if (typeof window.WOW !== 'undefined') {

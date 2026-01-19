@@ -1,1 +1,62 @@
-#footer {}
+.footer {
+    @include adaptive-value("padding-top", 50, 40, 1);
+    @include adaptive-value("padding-bottom", 50, 40, 1);
+    background-color: $white;
+
+    &__title {
+        font-size: 32px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #D8D5D0;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 32px;
+
+        @include media ("<tablet") {
+            flex-direction: column;
+            align-items: center;
+            row-gap: 40px;
+        }
+    }
+
+    &__content {
+        max-width: 990px;
+        width: 100%;
+    }
+
+
+    &__links {
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(2, auto);
+        gap: 20px 40px;
+        max-width: 545px;
+        width: 100%;
+
+        @include media ("<tablet") {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+        width: max-content;
+
+        &:not(p):hover {
+            span {
+                text-decoration: underline;
+            }
+        }
+
+        span {
+            color: $rose;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+}

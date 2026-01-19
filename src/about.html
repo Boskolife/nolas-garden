@@ -11,9 +11,9 @@
 
 <body>
     <a href="#main-content" class="skip-link visually-hidden">Skip to main content</a>
-    {{> header }}
-    {{> mobile-menu }}
     <div id="wrapper">
+        {{> header }}
+        {{> mobile-menu }}
         <main class="main" id="main-content">
             <section class="about">
                 <picture class="about__bg bg-1">
@@ -26,10 +26,9 @@
                     <div class="about__content">
                         <div class="about__content-block block-first">
                             <div class="about__content-block-text block-first-text">
-                                <h1 class="about__content-block-title block-first-title">Why
-                                    Flowers?</h1>
+                                <h1 class="about__content-block-title block-first-title wow">Why Flowers?</h1>
                                 <p
-                                    class="about__content-block-description block-first-description first">
+                                    class="about__content-block-description block-first-description first wow animate__animated animate__fadeInUp">
                                     Because I love them. As
                                     far
                                     as I can remember, even as a little kid I loved flowers. The
@@ -40,7 +39,7 @@
                                     they receive flowers. It’s such a sweet and simple way of making
                                     people feel loved.</p>
                                 <p
-                                    class="about__content-block-description block-first-description second">
+                                    class="about__content-block-description block-first-description second wow animate__animated animate__fadeInUp">
                                     I think starting my own
                                     flower business was obvious to most people in my life, except
                                     me.
@@ -63,7 +62,9 @@
                                     height="100%">
                             </picture>
                             <div class="about__content-block-text block-second-text">
-                                <p class="about__content-block-description">She was only 6 years
+                                <p
+                                    class="about__content-block-description wow animate__animated animate__fadeInUp">
+                                    She was only 6 years
                                     old. Nola got very sick very quickly and she eventually went
                                     blind. There wasn’t much she could enjoy, but she loved spending
                                     time outside in nature. I watched my blind cat courageously try
@@ -71,7 +72,9 @@
                                     walls and furniture like a Roomba. None of that stopped her from
                                     wanting to spend every last second doing what she loved, being
                                     outside.</p>
-                                <p class="about__content-block-description">It made me think about
+                                <p
+                                    class="about__content-block-description wow animate__animated animate__fadeInUp">
+                                    It made me think about
                                     my own life. What was something I loved so much that I would
                                     want to spend my last free moments doing it? Playing with
                                     flowers. Growing flowers. Being surrounded by flowers. So here I
@@ -82,17 +85,14 @@
                         </div>
                         <div class="about__content-block block-third">
                             <div class="about__content-block-text block-third-text">
-                                <h2 class="about__content-block-title block-third-title">What’s one
-                                    thing you hope
-                                    every person who receives your flowers feels—if they remember
-                                    nothing else?</h2>
-                                <p class="about__content-block-description block-third-description">
-                                    I want them to feel like
-                                    they matter to someone. Someone in their life was thinking about
-                                    them when they ordered the flowers. Someone was thinking about
-                                    their smile while waiting for the flowers to get delivered.
-                                    Someone was thinking about them and hoping they helped their day
-                                    get a little bit brighter.
+                                <h2 class="about__content-block-title block-third-title wow">What’s one thing you hope every person who receives your flowers feels—if they remember nothing else?</h2>
+                                <p
+                                    class="about__content-block-description block-third-description wow animate__animated animate__fadeInUp  ">
+                                    I want them to feel like they matter to someone. Someone in
+                                    their life was thinking about them when they ordered the
+                                    flowers. Someone was thinking about their smile while waiting
+                                    for the flowers to get delivered. Someone was thinking about
+                                    them and hoping they helped their day get a little bit brighter.
                                 </p>
                             </div>
                         </div>
@@ -102,18 +102,16 @@
                                     height="100%">
                             </picture>
                             <div class="about__content-block-text block-fourth-text">
-                                <h2 class="about__content-block-title block-fourth-title">What’s
-                                    something you’ve
-                                    learned about yourself through flowers?</h2>
+                                <h2 class="about__content-block-title block-fourth-title wow">What’s something you’ve learned about yourself through flowers?</h2>
                                 <p
-                                    class="about__content-block-description block-fourth-description">
+                                    class="about__content-block-description block-fourth-description wow animate__animated animate__fadeInUp">
                                     I’ve learned not to get
                                     too attached. I can create something magical, and it may wither
                                     away in a week. So I enjoy things as they are, while I have
                                     them. Flowers are a good metaphor for life.
                                 </p>
                                 <p
-                                    class="about__content-block-description block-fourth-description">
+                                    class="about__content-block-description block-fourth-description wow animate__animated animate__fadeInUp">
                                     If this resonates with
                                     you, consider turning that appreciation into kindness. Donations
                                     to No Kill animal charities help give vulnerable animals the
@@ -124,6 +122,7 @@
                         </div>
             </section>
         </main>
+        {{> footer }}
     </div>
     <script src="/js/wow.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
