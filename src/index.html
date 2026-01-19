@@ -12,369 +12,410 @@
 <body>
   {{> header }}
   {{> mobile-menu }}
-  <main class="main">
-    <section class="hero">
-      <div class="container">
-        <span class="hero__tip">Premium Floral Studio <br> in Los Angeles</span>
-      </div>
-      <picture class="hero__bg">
-        <img src="./images/paper.webp" width="100%" height="100%" alt="Paper Flower">
-      </picture>
-      <div class="hero__holder">
-        <picture
-          class="hero__flowers hero__tab-content hero__tab-content_active animate__animated animate__fadeInRight"
-          data-tab="0" aria-hidden="false">
-          <img src="./images/hero/flowers.webp" width="100%" height="100%" alt="Flowers">
+  <div id="wrapper">
+    <main class="main">
+      <section class="hero">
+        <div class="container">
+          <span class="hero__tip">Premium Floral Studio <br> in Los Angeles</span>
+        </div>
+        <picture class="hero__bg">
+          <img src="./images/paper.webp" width="100%" height="100%" alt="Paper Flower">
         </picture>
-        <picture class="hero__flowers hero__tab-content animate__animated animate__fadeInRight"
-          data-tab="1" aria-hidden="true">
-          <img src="./images/hero/flowers-1.webp" width="100%" height="100%" alt="Flowers">
+        <div class="hero__holder">
+          <picture
+            class="hero__flowers hero__tab-content hero__tab-content_active animate__animated animate__fadeInRight"
+            data-tab="0" aria-hidden="false">
+            <img src="./images/hero/flowers.webp" width="100%" height="100%" alt="Flowers">
+          </picture>
+          <picture class="hero__flowers hero__tab-content animate__animated animate__fadeInRight"
+            data-tab="1" aria-hidden="true">
+            <img src="./images/hero/flowers-1.webp" width="100%" height="100%" alt="Flowers">
+          </picture>
+          <picture class="hero__flowers hero__tab-content animate__animated animate__fadeInRight"
+            data-tab="2" aria-hidden="true">
+            <img src="./images/hero/flowers-2.webp" width="100%" height="100%" alt="Flowers">
+          </picture>
+          <picture class="hero__flowers hero__tab-content animate__animated animate__fadeInRight"
+            data-tab="3" aria-hidden="true">
+            <img src="./images/hero/flowers-3.webp" width="100%" height="100%" alt="Flowers">
+          </picture>
+          <video class="hero__video hero__tab-content hero__tab-content_active" data-tab="0"
+            width="100%" height="100%" muted aria-hidden="false">
+            <source src="./video/cat-video-1.mp4" type="video/mp4">
+            <source src="./video/cat-video-1.webm" type="video/webm">
+          </video>
+          <video class="hero__video hero__tab-content" data-tab="1" width="100%" height="100%" muted
+            aria-hidden="true">
+            <source src="./video/cat-video-2.mp4" type="video/mp4">
+            <source src="./video/cat-video-2.webm" type="video/webm">
+          </video>
+          <video class="hero__video hero__tab-content" data-tab="2" width="100%" height="100%" muted
+            aria-hidden="true">
+            <source src="./video/cat-video-3.mp4" type="video/mp4">
+            <source src="./video/cat-video-3.webm" type="video/webm">
+          </video>
+          <video class="hero__video hero__tab-content" data-tab="3" width="100%" height="100%" muted
+            aria-hidden="true">
+            <source src="./video/cat-video-4.mp4" type="video/mp4">
+            <source src="./video/cat-video-4.webm" type="video/webm">
+          </video>
+        </div>
+        <div class="container">
+          <div class="hero__content">
+            <div class="hero__tabs-buttons" role="tablist" aria-label="Hero content tabs">
+              <button class="hero__tab-button" type="button" role="tab" aria-selected="true"
+                aria-controls="hero-tab-0" data-tab-index="1">Celebrations</button>
+              <div class="divider"></div>
+              <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
+                aria-controls="hero-tab-1" data-tab-index="0">Workspaces</button>
+              <div class="divider"></div>
+              <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
+                aria-controls="hero-tab-2" data-tab-index="2">Weddings</button>
+              <div class="divider"></div>
+              <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
+                aria-controls="hero-tab-3" data-tab-index="3">Baby showers</button>
+            </div>
+            <div class="hero__inner-holder">
+              <div class="hero__inner hero__tab-content hero__tab-content_active" data-tab="0"
+                id="hero-tab-0" role="tabpanel">
+                <h2 class="hero__title">
+                  <i>Bespoke Floral Designs</i>
+                  <i>for Restaurants</i>
+                  <i>& Workspaces</i>
+                </h2>
+                <div class="hero__inner-block">
+                  <p class="hero__description">
+                    Serving Los Angeles and Orange County with care and intention.
+                  </p>
+                  <div class="hero__buttons">
+                    <a href="#"
+                      class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
+                      Us</a>
+                    <a href="#"
+                      class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
+                      Portfolio</a>
+                  </div>
+                </div>
+              </div>
+              <div class="hero__inner hero__tab-content" data-tab="1" id="hero-tab-1" role="tabpanel">
+                <h2 class="hero__title">
+                  <i>Birthdays,</i>
+                  <i>Holidays,</i>
+                  <i>& Just Because</i>
+                </h2>
+                <div class="hero__inner-block">
+                  <p class="hero__description">
+                    For celebrating the people you love — and the moments in between.Proudly serving
+                    Los Angeles and Orange County.
+                  </p>
+                  <div class="hero__buttons">
+                    <a href="#"
+                      class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
+                      Us</a>
+                    <a href="#"
+                      class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
+                      Portfolio</a>
+                  </div>
+                </div>
+              </div>
+              <div class="hero__inner hero__tab-content" data-tab="2" id="hero-tab-2" role="tabpanel">
+                <h2 class="hero__title">
+                  <i>Weddings</i>
+                  <i>& Events</i>
+                  <i>Reimagined</i>
+                </h2>
+                <div class="hero__inner-block">
+                  <p class="hero__description">
+                    Floral creations that feel personal, considered, and true to the people they're
+                    made for.
+                  </p>
+                  <div class="hero__buttons">
+                    <a href="#"
+                      class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
+                      Us</a>
+                    <a href="#"
+                      class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
+                      Portfolio</a>
+                  </div>
+                </div>
+              </div>
+              <div class="hero__inner hero__tab-content" data-tab="3" id="hero-tab-3" role="tabpanel">
+                <h2 class="hero__title">
+                  <i>Celebrating Milestones-</i>
+                  <i>BABY SHOWERS</i>
+                  <i>& Beyond</i>
+                </h2>
+                <div class="hero__inner-block">
+                  <p class="hero__description">
+                    For gatherings that matter.
+                  </p>
+                  <div class="hero__buttons">
+                    <a href="#"
+                      class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
+                      Us</a>
+                    <a href="#"
+                      class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
+                      Portfolio</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="teams">
+        <div class="container">
+          <h2 class="teams__title wow animate__animated">Trusted by LA's leading teams and venues</h2>
+          <div class="teams__inner">
+            <div class="teams__item wow animate__animated animate__fadeIn">
+              <img src="./images/teams/team-1.webp" width="100%" height="100%" alt="Team">
+            </div>
+            <div class="teams__item wow animate__animated animate__fadeIn">
+              <img src="./images/teams/team-2.webp" width="100%" height="100%" alt="Team">
+            </div>
+            <div class="teams__item wow animate__animated animate__fadeIn">
+              <img src="./images/teams/team-3.webp" width="100%" height="100%" alt="Team">
+            </div>
+            <div class="teams__item wow animate__animated animate__fadeIn">
+              <img src="./images/teams/team-4.webp" width="100%" height="100%" alt="Team">
+            </div>
+            <div class="teams__item wow animate__animated animate__fadeIn">
+              <img src="./images/teams/team-5.webp" width="100%" height="100%" alt="Team">
+            </div>
+            <div class="teams__item wow animate__animated animate__fadeIn">
+              <img src="./images/teams/team-6.webp" width="100%" height="100%" alt="Team">
+            </div>
+            <div class="teams__item wow animate__animated animate__fadeIn">
+              <img src="./images/teams/team-7.webp" width="100%" height="100%" alt="Team">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="delivery">
+        <picture class="delivery__bg wow animate__animated animate__zoomIn">
+          <img src="./images/line.svg" width="100%" height="100%" alt="Delivery">
         </picture>
-        <picture class="hero__flowers hero__tab-content animate__animated animate__fadeInRight"
-          data-tab="2" aria-hidden="true">
-          <img src="./images/hero/flowers-2.webp" width="100%" height="100%" alt="Flowers">
-        </picture>
-        <picture class="hero__flowers hero__tab-content animate__animated animate__fadeInRight"
-          data-tab="3" aria-hidden="true">
-          <img src="./images/hero/flowers-3.webp" width="100%" height="100%" alt="Flowers">
-        </picture>
-        <video class="hero__video hero__tab-content hero__tab-content_active" data-tab="0"
-          width="100%" height="100%" muted aria-hidden="false">
-          <source src="./video/cat-video-1.mp4" type="video/mp4">
-          <source src="./video/cat-video-1.webm" type="video/webm">
-        </video>
-        <video class="hero__video hero__tab-content" data-tab="1" width="100%" height="100%" muted
-          aria-hidden="true">
-          <source src="./video/cat-video-2.mp4" type="video/mp4">
-          <source src="./video/cat-video-2.webm" type="video/webm">
-        </video>
-        <video class="hero__video hero__tab-content" data-tab="2" width="100%" height="100%" muted
-          aria-hidden="true">
-          <source src="./video/cat-video-3.mp4" type="video/mp4">
-          <source src="./video/cat-video-3.webm" type="video/webm">
-        </video>
-        <video class="hero__video hero__tab-content" data-tab="3" width="100%" height="100%" muted
-          aria-hidden="true">
-          <source src="./video/cat-video-4.mp4" type="video/mp4">
-          <source src="./video/cat-video-4.webm" type="video/webm">
-        </video>
-      </div>
-      <div class="container">
-        <div class="hero__content">
-          <div class="hero__tabs-buttons" role="tablist" aria-label="Hero content tabs">
-            <button class="hero__tab-button" type="button" role="tab" aria-selected="true"
-              aria-controls="hero-tab-0" data-tab-index="1">Celebrations</button>
-            <div class="divider"></div>
-            <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
-              aria-controls="hero-tab-1" data-tab-index="0">Workspaces</button>
-            <div class="divider"></div>
-            <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
-              aria-controls="hero-tab-2" data-tab-index="2">Weddings</button>
-            <div class="divider"></div>
-            <button class="hero__tab-button" type="button" role="tab" aria-selected="false"
-              aria-controls="hero-tab-3" data-tab-index="3">Baby showers</button>
+        <div class="container">
+          <h2 class="delivery__title wow">
+            <i>Where do you need </i>
+            <i>flowers delivered?</i>
+          </h2>
+          <div class="delivery__inner">
+            <div class="delivery__image">
+              <img src="./images/delivery-img.webp" width="457" height="183" alt="Delivery">
+            </div>
+            <div class="delivery__content">
+              <p class="delivery__description wow animate__animated animate__fadeInUp">We proudly
+                serveLos Angeles and parts of Orange County.
+                Custom installations and recurring floral programs — verified via ZIP lookup.</p>
+              <form action="#" class="delivery__form">
+                <input type="text" class="delivery__input wow animate__animated animate__fadeInUp"
+                  placeholder="Enter your ZIP code">
+                <button type="submit"
+                  class="delivery__button btn btn--primary wow animate__animated animate__fadeInUp">Check
+                  ZIP</button>
+              </form>
+              <div class="delivery__map wow animate__animated animate__fadeInUp">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d88979.14565016812!2d-118.32751685185467!3d34.02572384419812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z0JvQvtGBLdCQ0L3QtNC20LXQu9C10YEsINCa0LDQu9GW0YTQvtGA0L3RltGPLCDQodC_0L7Qu9GD0YfQtdC90ZYg0KjRgtCw0YLQuCDQkNC80LXRgNC40LrQuA!5e0!3m2!1suk!2sua!4v1768813702465!5m2!1suk!2sua"
+                  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <p class="delivery__description wow animate__animated animate__fadeInUp">Serving Los
+                Angeles and parts of Orange County. Not
+                seeing your location? <br> <a href="#" class="delivery__link">Get in touch</a> — we’re
+                always happy to explore options</p>
+            </div>
           </div>
-          <div class="hero__inner-holder">
-            <div class="hero__inner hero__tab-content hero__tab-content_active" data-tab="0"
-              id="hero-tab-0" role="tabpanel">
-              <h2 class="hero__title">
-                <i>Bespoke Floral Designs</i>
-                <i>for Restaurants</i>
-                <i>& Workspaces</i>
-              </h2>
-              <div class="hero__inner-block">
-                <p class="hero__description">
-                  Serving Los Angeles and Orange County with care and intention.
-                </p>
-                <div class="hero__buttons">
-                  <a href="#"
-                    class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
-                    Us</a>
-                  <a href="#"
-                    class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
-                    Portfolio</a>
+        </div>
+      </section>
+      <section class="gallery">
+        <div class="container">
+          <div class="gallery__content">
+            <div class="gallery__inner">
+              <div class="gallery__slider">
+                <div class="gallery__swiper swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <picture class="gallery__image">
+                        <img src="./images/gallery/gallery-img-1.webp" width="100%" height="100%"
+                          alt="Gallery">
+                      </picture>
+                    </div>
+                    <div class="swiper-slide">
+                      <picture class="gallery__image">
+                        <img src="./images/gallery/gallery-img-2.webp" width="100%" height="100%"
+                          alt="Gallery">
+                      </picture>
+                    </div>
+                    <div class="swiper-slide">
+                      <picture class="gallery__image">
+                        <img src="./images/gallery/gallery-img-3.webp" width="100%" height="100%"
+                          alt="Gallery">
+                      </picture>
+                    </div>
+                    <div class="swiper-slide">
+                      <picture class="gallery__image">
+                        <img src="./images/gallery/gallery-img-4.webp" width="100%" height="100%"
+                          alt="Gallery">
+                      </picture>
+                    </div>
+                    <div class="swiper-slide">
+                      <picture class="gallery__image">
+                        <img src="./images/gallery/gallery-img-5.webp" width="100%" height="100%"
+                          alt="Gallery">
+                      </picture>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="hero__inner hero__tab-content" data-tab="1" id="hero-tab-1" role="tabpanel">
-              <h2 class="hero__title">
-                <i>Birthdays,</i>
-                <i>Holidays,</i>
-                <i>& Just Because</i>
-              </h2>
-              <div class="hero__inner-block">
-                <p class="hero__description">
-                  For celebrating the people you love — and the moments in between.Proudly serving
-                  Los Angeles and Orange County.
-                </p>
-                <div class="hero__buttons">
-                  <a href="#"
-                    class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
-                    Us</a>
-                  <a href="#"
-                    class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
-                    Portfolio</a>
+              <div class="gallery__text">
+                <h2 class="gallery__title wow">
+                  <i>A Glimpse Into</i>
+                  <i>Our Work</i>
+                </h2>
+                <div class="gallery__swiper-buttons">
+                  <div class="swiper-button-prev gallery__swiper-button-prev">
+                    <img src="./images/arrow.svg" alt="image not found" width="22" height="12">
+                  </div>
+                  <div class="swiper-button-next gallery__swiper-button-next">
+                    <img src="./images/arrow.svg" alt="image not found" width="22" height="12">
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="hero__inner hero__tab-content" data-tab="2" id="hero-tab-2" role="tabpanel">
-              <h2 class="hero__title">
-                <i>Weddings</i>
-                <i>& Events</i>
-                <i>Reimagined</i>
-              </h2>
-              <div class="hero__inner-block">
-                <p class="hero__description">
-                  Floral creations that feel personal, considered, and true to the people they're
-                  made for.
-                </p>
-                <div class="hero__buttons">
-                  <a href="#"
-                    class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
-                    Us</a>
-                  <a href="#"
-                    class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
-                    Portfolio</a>
-                </div>
-              </div>
-            </div>
-            <div class="hero__inner hero__tab-content" data-tab="3" id="hero-tab-3" role="tabpanel">
-              <h2 class="hero__title">
-                <i>Celebrating Milestones-</i>
-                <i>BABY SHOWERS</i>
-                <i>& Beyond</i>
-              </h2>
-              <div class="hero__inner-block">
-                <p class="hero__description">
-                  For gatherings that matter.
-                </p>
-                <div class="hero__buttons">
-                  <a href="#"
-                    class="hero__button btn btn--primary animate__animated animate__fadeInUpZoom">Contact
-                    Us</a>
-                  <a href="#"
-                    class="hero__button btn btn--secondary animate__animated animate__fadeInUpZoom">View
-                    Portfolio</a>
+                <div class="gallery__text-block wow animate__animated animate__fadeInUp">
+                  <p class="gallery__description">
+                    From elegant office displays to large-scale corporate events — see what we’ve
+                    created
+                    across LA.
+                  </p>
+                  <a href="#" class="gallery__button btn btn--primary">Read more</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="teams">
-      <div class="container">
-        <h2 class="teams__title wow animate__animated">Trusted by LA's leading teams and venues</h2>
-        <div class="teams__inner">
-          <div class="teams__item wow animate__animated animate__fadeIn">
-            <img src="./images/teams/team-1.webp" width="100%" height="100%" alt="Team">
-          </div>
-          <div class="teams__item wow animate__animated animate__fadeIn">
-            <img src="./images/teams/team-2.webp" width="100%" height="100%" alt="Team">
-          </div>
-          <div class="teams__item wow animate__animated animate__fadeIn">
-            <img src="./images/teams/team-3.webp" width="100%" height="100%" alt="Team">
-          </div>
-          <div class="teams__item wow animate__animated animate__fadeIn">
-            <img src="./images/teams/team-4.webp" width="100%" height="100%" alt="Team">
-          </div>
-          <div class="teams__item wow animate__animated animate__fadeIn">
-            <img src="./images/teams/team-5.webp" width="100%" height="100%" alt="Team">
-          </div>
-          <div class="teams__item wow animate__animated animate__fadeIn">
-            <img src="./images/teams/team-6.webp" width="100%" height="100%" alt="Team">
-          </div>
-          <div class="teams__item wow animate__animated animate__fadeIn">
-            <img src="./images/teams/team-7.webp" width="100%" height="100%" alt="Team">
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="delivery">
-      <picture class="delivery__bg wow animate__animated animate__zoomIn">
-        <img src="./images/line.svg" width="100%" height="100%" alt="Delivery">
-      </picture>
-      <div class="container">
-        <h2 class="delivery__title wow">
-          <i>Where do you need </i>
-          <i>flowers delivered?</i>
-        </h2>
-        <div class="delivery__inner">
-          <div class="delivery__image">
-            <img src="./images/delivery-img.webp" width="457" height="183" alt="Delivery">
-          </div>
-          <div class="delivery__content">
-            <p class="delivery__description wow animate__animated animate__fadeInUp">We proudly
-              serveLos Angeles and parts of Orange County.
-              Custom installations and recurring floral programs — verified via ZIP lookup.</p>
-            <form action="#" class="delivery__form">
-              <input type="text" class="delivery__input wow animate__animated animate__fadeInUp"
-                placeholder="Enter your ZIP code">
-              <button type="submit"
-                class="delivery__button btn btn--primary wow animate__animated animate__fadeInUp">Check
-                ZIP</button>
-            </form>
-            <div class="delivery__map wow animate__animated animate__fadeInUp">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d88979.14565016812!2d-118.32751685185467!3d34.02572384419812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z0JvQvtGBLdCQ0L3QtNC20LXQu9C10YEsINCa0LDQu9GW0YTQvtGA0L3RltGPLCDQodC_0L7Qu9GD0YfQtdC90ZYg0KjRgtCw0YLQuCDQkNC80LXRgNC40LrQuA!5e0!3m2!1suk!2sua!4v1768813702465!5m2!1suk!2sua"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <p class="delivery__description wow animate__animated animate__fadeInUp">Serving Los
-              Angeles and parts of Orange County. Not
-              seeing your location? <br> <a href="#" class="delivery__link">Get in touch</a> — we’re
-              always happy to explore options</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="gallery">
-      <div class="container">
-        <div class="gallery__content">
-          <div class="gallery__inner">
-            <div class="gallery__slider">
-              <div class="gallery__swiper swiper">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <picture class="gallery__image">
-                      <img src="./images/gallery/gallery-img-1.webp" width="100%" height="100%"
-                        alt="Gallery">
-                    </picture>
-                  </div>
-                  <div class="swiper-slide">
-                    <picture class="gallery__image">
-                      <img src="./images/gallery/gallery-img-2.webp" width="100%" height="100%"
-                        alt="Gallery">
-                    </picture>
-                  </div>
-                  <div class="swiper-slide">
-                    <picture class="gallery__image">
-                      <img src="./images/gallery/gallery-img-3.webp" width="100%" height="100%"
-                        alt="Gallery">
-                    </picture>
-                  </div>
-                  <div class="swiper-slide">
-                    <picture class="gallery__image">
-                      <img src="./images/gallery/gallery-img-4.webp" width="100%" height="100%"
-                        alt="Gallery">
-                    </picture>
-                  </div>
-                  <div class="swiper-slide">
-                    <picture class="gallery__image">
-                      <img src="./images/gallery/gallery-img-5.webp" width="100%" height="100%"
-                        alt="Gallery">
-                    </picture>
-                  </div>
-                </div>
+      </section>
+      <section class="solutions">
+        <div class="container">
+          <h2 class="solutions__title wow">
+            <i>Tailored</i>
+            <i>Floral Solutions</i>
+          </h2>
+          <p class="solutions__description wow animate__animated animate__fadeInUp">Curated Florals
+            For Every Need</p>
+          <div class="solutions__inner">
+            <div class="solutions__item">
+              <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
+                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                  height="100%">
+              </picture>
+              <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
+              <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
+                <h3 class="solutions__item-text-block-title ">
+                  Birthdays, Holidays <br> & Just Because
+                </h3>
+                <p class="solutions__item-text-block-description">Created to celebrate, surprise, and
+                  remind
+                  someone they’re on your mind.</p>
               </div>
             </div>
-            <div class="gallery__text">
-              <h2 class="gallery__title wow">
-                <i>A Glimpse Into</i>
-                <i>Our Work</i>
+            <div class="solutions__item">
+              <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
+                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                  height="100%">
+              </picture>
+              <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
+              <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
+                <h3 class="solutions__item-text-block-title ">
+                  Celebrating Milestones
+                </h3>
+                <p class="solutions__item-text-block-description">Milestones look different for
+                  everyone — from new babies and homes to promotions and new businesses. We create
+                  flowers to help mark those moments in ways that feel personal and meaningful.</p>
+              </div>
+            </div>
+            <div class="solutions__item">
+              <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
+                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                  height="100%">
+              </picture>
+              <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
+              <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
+                <h3 class="solutions__item-text-block-title ">
+                  Workplace Floral Progam
+                </h3>
+                <p class="solutions__item-text-block-description">Enhance the atmosphere where guests,
+                  diners, clients, and visitors gather. We handle everything: design, delivery,
+                  installation, and clean up.</p>
+              </div>
+            </div>
+            <div class="solutions__item">
+              <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
+                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                  height="100%">
+              </picture>
+              <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
+              <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
+                <h3 class="solutions__item-text-block-title ">
+                  Weddings & Events
+                </h3>
+                <p class="solutions__item-text-block-description">Refined floral storytelling for
+                  moments that deserve to be unforgettable.</p>
+              </div>
+            </div>
+            <div class="solutions__item">
+              <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
+                <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
+                  height="100%">
+              </picture>
+              <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
+              <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
+                <h3 class="solutions__item-text-block-title ">
+                  Corporate Gifting
+                </h3>
+                <p class="solutions__item-text-block-description">Thoughtful floral gifts for clients,
+                  teams, and partners—designed to leave a lasting impression.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="solutions__button btn btn--primary">Contact Us</a>
+        </div>
+      </section>
+      <section class="propose">
+        <div class="container">
+          <div class="propose__content">
+            <div class="propose__content-block block-top">
+              <h2 class="propose__title wow">
+                <i>Born From Love.</i>
+                <i>Built With Purpose.</i>
               </h2>
-              <div class="gallery__swiper-buttons">
-                <div class="swiper-button-prev gallery__swiper-button-prev">
-                  <img src="./images/arrow.svg" alt="image not found" width="22" height="12">
-                </div>
-                <div class="swiper-button-next gallery__swiper-button-next">
-                  <img src="./images/arrow.svg" alt="image not found" width="22" height="12">
-                </div>
-              </div>
-              <div class="gallery__text-block wow animate__animated animate__fadeInUp">
-                <p class="gallery__description">
-                  From elegant office displays to large-scale corporate events — see what we’ve
-                  created
-                  across LA.
-                </p>
-                <a href="#" class="gallery__button btn btn--primary">Read more</a>
+              <p class="propose__description first wow animate__animated animate__fadeInUp">When our founder
+                lost her beloved companion Nola to cancer, flowers became a quiet source of healing.
+              </p>
+            </div>
+            <div class="propose__content-block block-bottom">
+              <picture class="propose__content-block-bottom-image image-1">
+                <img src="./images/propose-2.webp" alt="image not found" width="100%" height="100%">
+              </picture>
+              <div class="propose__content-block-text">
+                <h3 class="propose__content-block-bottom-title propose__subtitle">In her honor, Nola’s Garden was created
+                  — a floral studio built on love, empathy, and intention.</h3>
+                <picture class="propose__content-block-bottom-image image-2">
+                  <img src="./images/propose-1.webp" alt="image not found" width="100%" height="100%">
+                </picture>
+                <p class="propose__description second wow animate__animated animate__fadeInUp">Today, we blend luxury floral artistry with compassion.
+                  Each arrangement is a gift of love – and a pledge of hope. We commit 10% of our
+                  proceeds to cat rescue shelters in the LA area.</p>
+                <p class="propose__description second wow animate__animated animate__fadeInUp">Our journey taught us resilience and empathy, and those
+                  values are at the heart of Nolas Garden.</p>
+                <a href="#" class="propose__button btn btn--primary">Read more</a>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="solutions">
-      <div class="container">
-        <h2 class="solutions__title wow">
-          <i>Tailored</i>
-          <i>Floral Solutions</i>
-        </h2>
-        <p class="solutions__description wow animate__animated animate__fadeInUp">Curated Florals
-          For Every Need</p>
-        <div class="solutions__inner">
-          <div class="solutions__item">
-            <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-              <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
-                height="100%">
-            </picture>
-            <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
-            <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
-              <h3 class="solutions__item-text-block-title ">
-                Birthdays, Holidays <br> & Just Because
-              </h3>
-              <p class="solutions__item-text-block-description">Created to celebrate, surprise, and
-                remind
-                someone they’re on your mind.</p>
-            </div>
-          </div>
-          <div class="solutions__item">
-            <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-              <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
-                height="100%">
-            </picture>
-            <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
-            <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
-              <h3 class="solutions__item-text-block-title ">
-                Celebrating Milestones
-              </h3>
-              <p class="solutions__item-text-block-description">Milestones look different for everyone — from new babies and homes to promotions and new businesses. We create flowers to help mark those moments in ways that feel personal and meaningful.</p>
-            </div>
-          </div>
-          <div class="solutions__item">
-            <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-              <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
-                height="100%">
-            </picture>
-            <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
-            <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
-              <h3 class="solutions__item-text-block-title ">
-                Workplace Floral Progam
-              </h3>
-              <p class="solutions__item-text-block-description">Enhance the atmosphere where guests, diners, clients, and visitors gather. We handle everything: design, delivery, installation, and clean up.</p>
-            </div>
-          </div>
-          <div class="solutions__item">
-            <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-              <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
-                height="100%">
-            </picture>
-            <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
-            <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
-              <h3 class="solutions__item-text-block-title ">
-                Weddings & Events
-              </h3>
-              <p class="solutions__item-text-block-description">Refined floral storytelling for moments that deserve to be unforgettable.</p>
-            </div>
-          </div>
-          <div class="solutions__item">
-            <picture class="solutions__item-image wow animate__animated animate__fadeInUp">
-              <img src="./images/gallery/gallery-img-12.webp" alt="image not found" width="100%"
-                height="100%">
-            </picture>
-            <div class="solutions__item-number wow animate__animated animate__fadeIn"></div>
-            <div class="solutions__item-text-block wow animate__animated animate__fadeInLeft">
-              <h3 class="solutions__item-text-block-title ">
-                Corporate Gifting
-              </h3>
-              <p class="solutions__item-text-block-description">Thoughtful floral gifts for clients, teams, and partners—designed to leave a lasting impression.</p>
-            </div>
-          </div>
-        </div>
-        <a href="#" class="solutions__button btn btn--primary">Contact Us</a>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+  </div>
   <script src="/js/wow.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script type="module" src="/js/main.js"></script>

@@ -89,12 +89,24 @@ if (typeof window.WOW !== 'undefined') {
           titleEls.forEach((el) => startBlurAnimation(el));
         }, 100);
       }
-      if (box.classList.contains('solutions__title')) {
-        setTimeout(() => {
-          const titleEls = document.querySelectorAll('.solutions__title i');
-          titleEls.forEach((el) => startBlurAnimation(el));
-        }, 100);
-      }
+        if (box.classList.contains('solutions__title')) {
+          setTimeout(() => {
+            const titleEls = document.querySelectorAll('.solutions__title i');
+            titleEls.forEach((el) => startBlurAnimation(el));
+          }, 100);
+        }
+        if (box.classList.contains('propose__title')) {
+          setTimeout(() => {
+            const titleEls = document.querySelectorAll('.propose__title i');
+            titleEls.forEach((el) => startBlurAnimation(el));
+          }, 100);
+        }
+        if (box.classList.contains('propose__subtitle')) {
+          setTimeout(() => {
+            const titleEls = document.querySelectorAll('.propose__subtitle');
+            titleEls.forEach((el) => startBlurAnimation(el));
+          }, 100);
+        }
     }
   }).init();
 }
@@ -419,10 +431,13 @@ setTimeout(() => {
     document.querySelectorAll('.solutions__title i').forEach((el) => {
       createCharSpans(el, ANIMATION_CONFIG.title);
     });
-  
+    document.querySelectorAll('.propose__title i').forEach((el) => {
+      createCharSpans(el, ANIMATION_CONFIG.title);
+    });
   // Start animation for visible hero elements
   animateText('.hero__title i', ANIMATION_CONFIG.title);
   animateText('.hero__description', ANIMATION_CONFIG.description);
+  animateText('.propose__subtitle');
 }, 100);
 
 
