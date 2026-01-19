@@ -1,4 +1,6 @@
 .header {
+    border-bottom: 1px solid #D8D5D0;
+    background-color: $white;
 
     &__inner {
         position: relative;
@@ -141,11 +143,11 @@
             height: 3px;
             background-color: $rose;
 
-            &:nth-child(2){
+            &:nth-child(2) {
                 width: 50%;
             }
 
-            &:nth-child(3){
+            &:nth-child(3) {
                 width: 75%;
             }
         }

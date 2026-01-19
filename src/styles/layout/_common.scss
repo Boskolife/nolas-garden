@@ -1230,13 +1230,13 @@
         cursor: pointer;
         transition: rotate 0.3s ease;
 
-        &:hover{
+        &:hover {
             rotate: 180deg;
             transition: rotate 0.3s ease;
         }
     }
 
-    &__inner{
+    &__inner {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1253,5 +1253,266 @@
         color: $black;
         line-height: 140%;
         text-align: center;
+    }
+}
+
+.about {
+    @include adaptive-value("padding-top", 150, 30, 1);
+    @include adaptive-value("padding-bottom", 150, 30, 1);
+    position: relative;
+
+    &__bg {
+        position: absolute;
+        object-fit: cover;
+        z-index: 1;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        &.bg-1 {
+            top: 48%;
+            right: 0;
+            max-width: 515px;
+            min-width: 350px;
+            width: 30%;
+
+            @include media ("<tablet") {
+                top: 64%;
+                right: -15%;
+            }
+        }
+
+        &.bg-2 {
+            bottom: 0;
+            right: 0;
+            max-width: 515px;
+            width: 100%;
+            height: 200px;
+
+            @include media ("<tablet") {
+                display: none;
+            }
+        }
+    }
+
+    .block {
+
+        &-first {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            column-gap: 10px;
+            max-width: 1125px;
+            width: 100%;
+            margin: 0 auto;
+            margin-bottom: 100px;
+
+            @include media ("<desktop") {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            
+            @include media ("<phone") {
+                align-items: flex-start;
+            }
+
+            &-text {
+                @include media ("<desktop") {
+                    display: contents;
+                }
+            }
+
+            &-title {
+                @include adaptive-value("font-size", 80, 36, 1);
+                margin-bottom: 52px;
+
+                @include media ("<desktop") {
+                    order: 1;
+                    margin-bottom: 0;
+                }
+            }
+
+            &-text {
+                max-width: 680px;
+                width: 100%;
+            }
+
+            &-description {
+                &.first {
+                    @include media ("<desktop") {
+                        order: 3;
+                    }
+                }
+
+                &.second {
+                    @include media ("<desktop") {
+                        order: 4;
+                    }
+                }
+            }
+
+            &-image {
+                max-width: 436px;
+                width: 100%;
+                height: 469px;
+
+                @include media ("<desktop") {
+                    order: 2;
+                    rotate: -3deg;
+                    height: auto;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+
+        &-second {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            column-gap: 40px;
+            max-width: 1125px;
+            width: 100%;
+            margin: 0 auto;
+            margin-bottom: 65px;
+
+            @include media ("<desktop") {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 40px;
+            }
+
+            &-image {
+                max-width: 336px;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1/1;
+                margin-top: -20px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            &-text {
+                max-width: 680px;
+                width: 100%;
+                margin-right: auto;
+
+                @include media ("<desktop") {
+                    max-width: 100%;
+                }
+            }
+        }
+
+        &-third {
+            max-width: 925px;
+            width: 100%;
+            margin-bottom: 72px;
+
+            @include media ("<desktop") {
+                margin-bottom: 40px;
+            }
+
+            &-title {
+                @include adaptive-value("font-size", 60, 28, 1);
+                margin-bottom: 52px;
+
+                @include media ("<desktop") {
+                    margin-bottom: 16px;
+                }
+            }
+
+            &-description {
+                max-width: 680px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+        }
+
+        &-fourth {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            column-gap: 40px;
+
+            @include media ("<desktop") {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            &-image {
+                max-width: 336px;
+                width: 100%;
+                height: auto;
+                rotate: 3deg;
+
+                @include media ("<desktop") {
+                    order: 2;
+                    rotate: 0deg;
+                }
+            }
+
+            &-text {
+                max-width: 830px;
+                width: 100%;
+
+                @include media ("<desktop") {
+                    display: contents;
+                    max-width: 100%
+                }
+            }
+
+            &-title {
+                @include adaptive-value("font-size", 60, 28, 1);
+                margin-bottom: 52px;
+
+                @include media ("<desktop") {
+                    order: 1;
+                    margin-bottom: 0;
+                }
+            }
+
+            &-description {
+                max-width: 680px;
+                width: 100%;
+                margin: 0 auto 32px auto;
+
+                @include media ("<desktop") {
+                    max-width: 100%;
+                    order: 3;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &__content-block {
+        &-description {
+            @include adaptive-value("font-size", 18, 16, 1);
+            color: $black;
+            line-height: 140%;
+
+            &:not(:last-of-type) {
+                margin-bottom: 32px;
+
+                @include media ("<tablet") {
+                    margin-bottom: 16px;
+                }
+            }
+        }
     }
 }
