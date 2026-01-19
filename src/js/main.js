@@ -22,6 +22,14 @@ if (!document.getElementById('animateText-style')) {
   const style = document.createElement('style');
   style.id = 'animateText-style';
   style.textContent = `
+      [class^="word-"] {
+        display: inline-block;
+        white-space: nowrap;
+      }
+      [class^="word-"]:not(:last-child)::after {
+        content: ' ';
+        white-space: normal;
+      }
       [class^="char-"] {
         display: inline-block;
         opacity: 0;
@@ -47,6 +55,7 @@ function createCharSpans(el, options = {}) {
   if (!blurEnabled) return;
 
   const uniqueClass = `char-${Math.floor(Math.random() * 100000)}`;
+  const wordClass = `word-${Math.floor(Math.random() * 100000)}`;
   const charDelay = options.charDelay || 0.03; // Delay between characters in seconds
 
   const text = el.textContent.trim();
@@ -54,12 +63,33 @@ function createCharSpans(el, options = {}) {
 
   el.innerHTML = '';
 
-  [...text].forEach((char, i) => {
-    const span = document.createElement('span');
-    span.textContent = char === ' ' ? '\u00A0' : char;
-    span.className = uniqueClass;
-    span.style.animationDelay = `${i * charDelay}s`;
-    el.appendChild(span);
+  // Split text into words (preserving spaces)
+  const words = text.split(/(\s+)/);
+  let charIndex = 0;
+
+  words.forEach((word) => {
+    // Skip empty strings and spaces-only strings
+    if (!word || /^\s+$/.test(word)) {
+      // Add space as text node
+      el.appendChild(document.createTextNode(word));
+      return;
+    }
+
+    // Create word wrapper
+    const wordSpan = document.createElement('span');
+    wordSpan.className = wordClass;
+
+    // Split word into characters
+    [...word].forEach((char) => {
+      const charSpan = document.createElement('span');
+      charSpan.textContent = char;
+      charSpan.className = uniqueClass;
+      charSpan.style.animationDelay = `${charIndex * charDelay}s`;
+      wordSpan.appendChild(charSpan);
+      charIndex++;
+    });
+
+    el.appendChild(wordSpan);
   });
 }
 
