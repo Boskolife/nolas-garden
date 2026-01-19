@@ -11,6 +11,12 @@ const ANIMATION_CONFIG = {
   },
 };
 
+// Constants
+const ZIP_CODE_LENGTH = 5;
+const ZIP_CODE_REGEX = /^\d{5}$/;
+const ANIMATION_DELAY = 100;
+const TEXT_ANIMATION_DELAY = 50;
+
 // Create CSS styles only once
 if (!document.getElementById('animateText-style')) {
   const style = document.createElement('style');
@@ -67,52 +73,30 @@ function startBlurAnimation(el) {
   });
 }
 
+// WOW animation callbacks configuration
+const WOW_ANIMATION_CONFIG = {
+  'teams__title': { selector: '.teams__title', isMultiple: false },
+  'delivery__title': { selector: '.delivery__title i', isMultiple: true },
+  'gallery__title': { selector: '.gallery__title i', isMultiple: true },
+  'solutions__title': { selector: '.solutions__title i', isMultiple: true },
+  'propose__title': { selector: '.propose__title i', isMultiple: true },
+  'propose__subtitle': { selector: '.propose__subtitle', isMultiple: true },
+};
+
 if (typeof window.WOW !== 'undefined') {
   new window.WOW({
     callback: function(box) {
-      // Start text animation when element becomes visible
-      if (box.classList.contains('teams__title')) {
-        setTimeout(() => {
-          const titleEl = document.querySelector('.teams__title');
-          if (titleEl) startBlurAnimation(titleEl);
-        }, 100);
-      }
-      if (box.classList.contains('delivery__title')) {
-        setTimeout(() => {
-          const titleEls = document.querySelectorAll('.delivery__title i');
-          titleEls.forEach((el) => startBlurAnimation(el));
-        }, 100);
-      }
-      if (box.classList.contains('gallery__title')) {
-        setTimeout(() => {
-          const titleEls = document.querySelectorAll('.gallery__title i');
-          titleEls.forEach((el) => startBlurAnimation(el));
-        }, 100);
-      }
-        if (box.classList.contains('solutions__title')) {
-          setTimeout(() => {
-            const titleEls = document.querySelectorAll('.solutions__title i');
-            titleEls.forEach((el) => startBlurAnimation(el));
-          }, 100);
-        }
-        if (box.classList.contains('propose__title')) {
-          setTimeout(() => {
-            const titleEls = document.querySelectorAll('.propose__title i');
-            titleEls.forEach((el) => startBlurAnimation(el));
-          }, 100);
-        }
-        if (box.classList.contains('propose__subtitle')) {
-          setTimeout(() => {
-            const titleEls = document.querySelectorAll('.propose__subtitle');
-            titleEls.forEach((el) => startBlurAnimation(el));
-          }, 100);
-        }
+      const className = Array.from(box.classList).find(cls => WOW_ANIMATION_CONFIG[cls]);
+      if (!className) return;
+
+      const config = WOW_ANIMATION_CONFIG[className];
+      setTimeout(() => {
+        const elements = document.querySelectorAll(config.selector);
+        elements.forEach((el) => startBlurAnimation(el));
+      }, ANIMATION_DELAY);
     }
   }).init();
 }
-
-initMobileMenu();
-initHeroTabs();
 
 function initMobileMenu() {
   const mobileMenu = document.querySelector('.mobile-menu');
@@ -243,8 +227,7 @@ function initHeroTabs() {
         // Start text animation for visible content in active tab
         setTimeout(() => {
           const titleElements = content.querySelectorAll('.hero__title i');
-          const descriptionElements =
-            content.querySelectorAll('.hero__description');
+          const descriptionElements = content.querySelectorAll('.hero__description');
 
           titleElements.forEach((el) =>
             applyBlurAnimation(el, ANIMATION_CONFIG.title),
@@ -252,7 +235,7 @@ function initHeroTabs() {
           descriptionElements.forEach((el) =>
             applyBlurAnimation(el, ANIMATION_CONFIG.description),
           );
-        }, 50);
+        }, TEXT_ANIMATION_DELAY);
       } else {
         content.classList.remove('hero__tab-content_active');
         content.setAttribute('aria-hidden', 'true');
@@ -319,50 +302,30 @@ function initHeroTabs() {
     button.addEventListener('keydown', (e) => {
       const currentIndex = parseInt(button.getAttribute('data-tab-index'), 10);
       let targetIndex = currentIndex;
+      let shouldPreventDefault = false;
 
       if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        targetIndex =
-          currentIndex > 0 ? currentIndex - 1 : tabButtons.length - 1;
-        const targetButton = Array.from(tabButtons).find(
-          (btn) =>
-            parseInt(btn.getAttribute('data-tab-index'), 10) === targetIndex,
-        );
-        if (targetButton) {
-          targetButton.focus();
-          showTab(targetIndex);
-        }
+        targetIndex = currentIndex > 0 ? currentIndex - 1 : tabButtons.length - 1;
+        shouldPreventDefault = true;
       } else if (e.key === 'ArrowRight') {
+        targetIndex = currentIndex < tabButtons.length - 1 ? currentIndex + 1 : 0;
+        shouldPreventDefault = true;
+      } else if (e.key === 'Home') {
+        targetIndex = 0;
+        shouldPreventDefault = true;
+      } else if (e.key === 'End') {
+        targetIndex = tabButtons.length - 1;
+        shouldPreventDefault = true;
+      }
+
+      if (shouldPreventDefault) {
         e.preventDefault();
-        targetIndex =
-          currentIndex < tabButtons.length - 1 ? currentIndex + 1 : 0;
         const targetButton = Array.from(tabButtons).find(
-          (btn) =>
-            parseInt(btn.getAttribute('data-tab-index'), 10) === targetIndex,
+          (btn) => parseInt(btn.getAttribute('data-tab-index'), 10) === targetIndex,
         );
         if (targetButton) {
           targetButton.focus();
           showTab(targetIndex);
-        }
-      } else if (e.key === 'Home') {
-        e.preventDefault();
-        const firstButton = Array.from(tabButtons).find(
-          (btn) => parseInt(btn.getAttribute('data-tab-index'), 10) === 0,
-        );
-        if (firstButton) {
-          firstButton.focus();
-          showTab(0);
-        }
-      } else if (e.key === 'End') {
-        e.preventDefault();
-        const lastIndex = tabButtons.length - 1;
-        const lastButton = Array.from(tabButtons).find(
-          (btn) =>
-            parseInt(btn.getAttribute('data-tab-index'), 10) === lastIndex,
-        );
-        if (lastButton) {
-          lastButton.focus();
-          showTab(lastIndex);
         }
       }
     });
@@ -418,27 +381,17 @@ setTimeout(() => {
   });
   
   // Create spans for WOW elements (will be animated when visible)
-  const teamsTitle = document.querySelector('.teams__title');
-  if (teamsTitle) {
-    createCharSpans(teamsTitle, ANIMATION_CONFIG.title);
-  }
-  document.querySelectorAll('.delivery__title i').forEach((el) => {
-    createCharSpans(el, ANIMATION_CONFIG.title);
+  Object.values(WOW_ANIMATION_CONFIG).forEach((config) => {
+    document.querySelectorAll(config.selector).forEach((el) => {
+      createCharSpans(el, ANIMATION_CONFIG.title);
+    });
   });
-    document.querySelectorAll('.gallery__title i').forEach((el) => {
-      createCharSpans(el, ANIMATION_CONFIG.title);
-    });
-    document.querySelectorAll('.solutions__title i').forEach((el) => {
-      createCharSpans(el, ANIMATION_CONFIG.title);
-    });
-    document.querySelectorAll('.propose__title i').forEach((el) => {
-      createCharSpans(el, ANIMATION_CONFIG.title);
-    });
+
   // Start animation for visible hero elements
   animateText('.hero__title i', ANIMATION_CONFIG.title);
   animateText('.hero__description', ANIMATION_CONFIG.description);
   animateText('.propose__subtitle');
-}, 100);
+}, ANIMATION_DELAY);
 
 
 if (typeof window.Swiper !== 'undefined') {
@@ -461,17 +414,28 @@ if (typeof window.Swiper !== 'undefined') {
 
 // Modal management functions
 function initModals() {
-  const successModal = document.getElementById('succes-modal');
-  const failureModal = document.getElementById('failure-modal');
-  const successBackdrop = document.getElementById('succes-modal-backdrop');
-  const failureBackdrop = document.getElementById('failure-modal-backdrop');
+  const modals = [
+    {
+      modal: document.getElementById('succes-modal'),
+      backdrop: document.getElementById('succes-modal-backdrop'),
+      name: 'success'
+    },
+    {
+      modal: document.getElementById('failure-modal'),
+      backdrop: document.getElementById('failure-modal-backdrop'),
+      name: 'failure'
+    }
+  ];
 
-  if (!successModal || !failureModal || !successBackdrop || !failureBackdrop) {
+  // Check if all modals exist
+  if (modals.some(m => !m.modal || !m.backdrop)) {
     return;
   }
 
   // Function to open modal
   function openModal(modal, backdrop) {
+    if (!modal || !backdrop) return;
+    
     backdrop.setAttribute('aria-hidden', 'false');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -485,64 +449,64 @@ function initModals() {
 
   // Function to close modal
   function closeModal(modal, backdrop) {
+    if (!modal || !backdrop) return;
+    
     backdrop.setAttribute('aria-hidden', 'true');
     modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    
+    // Only restore body overflow if no other modals are open
+    // Check after closing current modal
+    const hasOpenModal = modals.some(m => 
+      m.modal !== modal && m.modal.getAttribute('aria-hidden') === 'false'
+    );
+    if (!hasOpenModal) {
+      document.body.style.overflow = '';
+    }
   }
 
-  // Close buttons
-  const successCloseBtn = successModal.querySelector('.modal__close-btn');
-  const failureCloseBtn = failureModal.querySelector('.modal__close-btn');
+  // Setup each modal
+  modals.forEach(({ modal, backdrop }) => {
+    const closeBtn = modal.querySelector('.modal__close-btn');
+    
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => closeModal(modal, backdrop));
+    }
 
-  if (successCloseBtn) {
-    successCloseBtn.addEventListener('click', () => {
-      closeModal(successModal, successBackdrop);
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        closeModal(modal, backdrop);
+      }
     });
-  }
-
-  if (failureCloseBtn) {
-    failureCloseBtn.addEventListener('click', () => {
-      closeModal(failureModal, failureBackdrop);
-    });
-  }
-
-  // Close on backdrop click
-  successBackdrop.addEventListener('click', () => {
-    closeModal(successModal, successBackdrop);
   });
 
-  failureBackdrop.addEventListener('click', () => {
-    closeModal(failureModal, failureBackdrop);
-  });
-
-  // Close on Escape key
+  // Close on Escape key (only for open modals)
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (successModal.getAttribute('aria-hidden') === 'false') {
-        closeModal(successModal, successBackdrop);
-      }
-      if (failureModal.getAttribute('aria-hidden') === 'false') {
-        closeModal(failureModal, failureBackdrop);
-      }
+      modals.forEach(({ modal, backdrop }) => {
+        if (modal.getAttribute('aria-hidden') === 'false') {
+          closeModal(modal, backdrop);
+        }
+      });
     }
   });
 
   // Export functions to window for external use
-  window.openSuccessModal = () => openModal(successModal, successBackdrop);
-  window.openFailureModal = () => openModal(failureModal, failureBackdrop);
-  window.closeSuccessModal = () => closeModal(successModal, successBackdrop);
-  window.closeFailureModal = () => closeModal(failureModal, failureBackdrop);
+  const successModal = modals.find(m => m.name === 'success');
+  const failureModal = modals.find(m => m.name === 'failure');
+  
+  if (successModal) {
+    window.openSuccessModal = () => openModal(successModal.modal, successModal.backdrop);
+    window.closeSuccessModal = () => closeModal(successModal.modal, successModal.backdrop);
+  }
+  
+  if (failureModal) {
+    window.openFailureModal = () => openModal(failureModal.modal, failureModal.backdrop);
+    window.closeFailureModal = () => closeModal(failureModal.modal, failureModal.backdrop);
+  }
 }
 
-// Initialize modals when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initModals);
-} else {
-  initModals();
-}
-
-// Valid ZIP codes list
-const VALID_ZIP_CODES = [
+// Valid ZIP codes list (using Set for O(1) lookup performance)
+const VALID_ZIP_CODES = new Set([
   '90003', '90043', '90044', '90045', '90047', '90061', '90094',
   '90220', '90221', '90222', '90230', '90232', '90245', '90247',
   '90248', '90249', '90250', '90254', '90260', '90266', '90277',
@@ -550,7 +514,7 @@ const VALID_ZIP_CODES = [
   '90305', '90501', '90502', '90503', '90504', '90505', '90710',
   '90717', '90744', '90745', '90746', '90755', '90802', '90804',
   '90806', '90810', '90813'
-];
+]);
 
 // Initialize delivery form
 function initDeliveryForm() {
@@ -563,17 +527,16 @@ function initDeliveryForm() {
 
   // Validate ZIP code format
   function isValidZipFormat(zipCode) {
-    // Check if ZIP code contains only digits and has exactly 5 characters
-    return /^\d{5}$/.test(zipCode);
+    return ZIP_CODE_REGEX.test(zipCode);
   }
 
   // Restrict input to numbers only
   zipInput.addEventListener('input', (e) => {
     // Remove any non-digit characters
     e.target.value = e.target.value.replace(/\D/g, '');
-    // Limit to 5 digits
-    if (e.target.value.length > 5) {
-      e.target.value = e.target.value.slice(0, 5);
+    // Limit to ZIP_CODE_LENGTH digits
+    if (e.target.value.length > ZIP_CODE_LENGTH) {
+      e.target.value = e.target.value.slice(0, ZIP_CODE_LENGTH);
     }
   });
 
@@ -581,7 +544,7 @@ function initDeliveryForm() {
   zipInput.addEventListener('paste', (e) => {
     e.preventDefault();
     const pastedText = (e.clipboardData || window.clipboardData).getData('text');
-    const numericOnly = pastedText.replace(/\D/g, '').slice(0, 5);
+    const numericOnly = pastedText.replace(/\D/g, '').slice(0, ZIP_CODE_LENGTH);
     zipInput.value = numericOnly;
   });
 
@@ -600,14 +563,12 @@ function initDeliveryForm() {
       return;
     }
 
-    // Check if ZIP code is in the valid list
-    if (VALID_ZIP_CODES.includes(zipCode)) {
-      // Open success modal
+    // Check if ZIP code is in the valid list (using Set for O(1) lookup)
+    if (VALID_ZIP_CODES.has(zipCode)) {
       if (window.openSuccessModal) {
         window.openSuccessModal();
       }
     } else {
-      // Open failure modal
       if (window.openFailureModal) {
         window.openFailureModal();
       }
@@ -615,9 +576,16 @@ function initDeliveryForm() {
   });
 }
 
-// Initialize delivery form when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initDeliveryForm);
-} else {
+// Initialize all components when DOM is ready
+function init() {
+  initMobileMenu();
+  initHeroTabs();
+  initModals();
   initDeliveryForm();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
 }
