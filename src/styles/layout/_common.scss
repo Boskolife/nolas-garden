@@ -131,6 +131,10 @@
 
     .container {
         position: relative;
+
+        @include media ("<desktop") {
+            padding: 0;
+        }
     }
 
     &__bg {
@@ -160,7 +164,7 @@
     &__flowers {
         position: absolute;
         top: 0;
-        right: 0;
+        right: -10%;
         max-width: 630px;
         width: 100%;
         height: auto;
@@ -173,7 +177,10 @@
 
         @include media ("<tablet") {
             max-width: 290px;
-            margin-right: -60px;
+        }
+
+        @include media ("<phone") {
+            right: -13%;
         }
 
         &.hero__tab-content_active {
@@ -214,8 +221,7 @@
         align-items: flex-start;
 
         @include media ("<desktop") {
-            padding-top: 0;
-            padding-bottom: 24px;
+            padding: 0 15px 24px 15px
         }
     }
 
