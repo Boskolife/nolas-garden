@@ -503,9 +503,17 @@ function initModals() {
   // Setup each modal
   modals.forEach(({ modal, backdrop }) => {
     const closeBtn = modal.querySelector('.modal__close-btn');
+    const modalButton = modal.querySelector('.modal__button');
     
     if (closeBtn) {
       closeBtn.addEventListener('click', () => closeModal(modal, backdrop));
+    }
+
+    // Close modal when clicking the button inside modal
+    if (modalButton) {
+      modalButton.addEventListener('click', () => {
+        closeModal(modal, backdrop);
+      });
     }
 
     backdrop.addEventListener('click', (e) => {

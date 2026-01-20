@@ -127,7 +127,7 @@
 .hero {
     position: relative;
     overflow: hidden;
-
+    background-color: #eeeee5;
 
     .container {
         position: relative;
@@ -149,7 +149,7 @@
             width: 100%;
             height: 50dvh;
             overflow: hidden;
-            background-color: #eeeee5;
+
         }
 
         @include media ("<tablet") {
@@ -1156,6 +1156,7 @@
     z-index: 1000;
     text-align: center;
     @include adaptive-value("padding", 80, 32, 1);
+    @include adaptive-value("padding-top", 80, 55, 1);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -1462,6 +1463,76 @@
                 @include media ("<tablet") {
                     margin-bottom: 16px;
                 }
+            }
+        }
+    }
+}
+
+.portfolio {
+    @include adaptive-value("padding-top", 56, 32, 1);
+    @include adaptive-value("padding-bottom", 56, 32, 1);
+
+    &__title {
+        @include adaptive-value("font-size", 96, 36, 1);
+        @include adaptive-value("margin-bottom", 59, 32, 1);
+        text-align: center;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            @include adaptive-value("margin-bottom", 59, 32, 1);
+        }
+
+        &-title {
+            @include adaptive-value("font-size", 62, 36, 1);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #D8D5D0;
+            color: $rose;
+            text-transform: uppercase;
+        }
+
+        &-content {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 24px;
+
+            @include media ("<tablet") {
+                flex-direction: column;
+            }
+        }
+
+        &-image {
+            display: inline-block;
+            max-width: 750px;
+            width: 100%;
+            aspect-ratio: 3/2;
+
+            @include media ("<tablet") {
+                height: 190px;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 12px;
+            padding: 0;
+            margin: 0;
+            list-style: inside;
+            margin-bottom: 24px;
+
+            &-item {
+                @include adaptive-value("font-size", 18, 16, 1);
+                line-height: 140%;
+                color: $black;
             }
         }
     }
