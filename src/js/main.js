@@ -1,3 +1,4 @@
+import WOW from 'wow.js';
 
 // Animation speed configuration
 const ANIMATION_CONFIG = {
@@ -117,8 +118,9 @@ const WOW_ANIMATION_CONFIG = {
   'block-fourth-title': { selector: '.block-fourth-title', isMultiple: false },
 };
 
-if (typeof window.WOW !== 'undefined') {
-  new window.WOW({
+// Initialize WOW.js
+if (typeof WOW !== 'undefined') {
+  new WOW({
     callback: function(box) {
       const className = Array.from(box.classList).find(cls => WOW_ANIMATION_CONFIG[cls]);
       if (!className) return;
