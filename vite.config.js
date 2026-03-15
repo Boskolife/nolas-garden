@@ -10,7 +10,7 @@ htmlFiles.forEach((file) => {
 });
 
 export default defineConfig({
-  base: '/nolas-garden',
+  base: '/Nolas-Garden',
   root: 'src',
   publicDir: '../public',
   plugins: [
